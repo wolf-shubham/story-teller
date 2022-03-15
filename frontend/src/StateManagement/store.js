@@ -1,3 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-const store = configureStore()
+
+const initialState = {}
+
+const store = configureStore(initialState, {
+    reducer: {}
+})
+
+export default store
