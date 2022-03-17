@@ -15,7 +15,7 @@ export const userLogin = (email, password) => async (dispatch) => {
             type: 'LoginSuccess',
             payload: data.user
         })
-        localStorage.setItem('userInfo', JSON.stringify(data))
+        localStorage.setItem('userInfo', JSON.stringify(data.token))
     } catch (error) {
         dispatch({
             type: 'LoginFailure',
@@ -27,26 +27,60 @@ export const userLogin = (email, password) => async (dispatch) => {
 
 
 export const loadUserAction = () => async (dispatch) => {
+    if (localStorage.getItem('userInfo')) {
+        try {
+            const userData = JSON.parse(localStorage.getItem('userInfo'))
+            console.log(userData);
+
+            dispatch({
+                type: 'LoadUserRequest'
+            })
+
+            const config = {
+                headers: {
+                    'Content-type': 'application/json',
+                    'Authorization': `Bearer ${userData}`
+                }
+            }
+            const { data } = await axios.get('/user/myprofile', config)
+
+            dispatch({
+                type: 'LoadUserSuccess',
+                payload: data.users
+            })
+        } catch (error) {
+            dispatch({
+                type: 'LoadUserFailure',
+                payload: error
+            })
+        }
+    }
+
+}
+
+
+
+export const getAllUsersAction = () => async (dispatch) => {
     try {
         dispatch({
-            type: 'LoadUserRequest'
+            type: 'GetAllUsersRequest'
         })
         const userData = JSON.parse(localStorage.getItem('userInfo'))
 
-        const config = {
+        const { data } = await axios.get('/user/allusers', {
             headers: {
                 'Content-type': 'application/json',
                 'Authorization': `Bearer ${userData.token}`
             }
-        }
-        const { data } = await axios.get('/user/myprofile', config)
+        })
+        console.log(data);
         dispatch({
-            type: 'LoadUserSuccess',
-            payload: data.user
+            type: 'GetAllUsersSuccess',
+            payload: data.users
         })
     } catch (error) {
         dispatch({
-            type: 'LoadUserFailure',
+            type: 'GetAllUsersFailure',
             payload: error
         })
     }

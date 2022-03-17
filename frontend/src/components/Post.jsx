@@ -24,7 +24,7 @@ const Post = ({
 
     return (
         <div>
-            <h1>post</h1>
+            <br />
             <img src={authorDP} alt='display pic' style={{ width: '35px', borderRadius: '50%' }} />
             <Link to={`/user/${authorId}`}>
                 <span>{authorName}</span>

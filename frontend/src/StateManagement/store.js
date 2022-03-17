@@ -1,10 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { userReducer } from './Reducers/UserReducer'
+import { followingsPostsReducer } from './Reducers/PostReducers'
+import { getAllUsersReducer, loadUserReducer, userReducer } from './Reducers/UserReducer'
 
 
 const store = configureStore({
     reducer: {
-        user: userReducer
+        user: userReducer,
+        loadUserData: loadUserReducer,
+        postOfFollowing: followingsPostsReducer,
+        allusers: getAllUsersReducer
     }
 })
 
