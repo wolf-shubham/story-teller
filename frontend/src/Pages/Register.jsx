@@ -3,6 +3,7 @@ import { Avatar } from '@material-ui/core'
 import { Button } from '@material-ui/core'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { userRegisterAction } from '../stateManagement/Actions/userActions'
 
 const Register = () => {
@@ -73,7 +74,7 @@ const Register = () => {
                         color="primary"
                     >REGISTER
                     </Button>
-                    <h3 className='loginLink'>Already had an account ! <a href="/register">Login</a></h3>
+                    <h3 className='loginLink'>Already had an account ! <Link to="/login">Login</Link></h3>
                 </form>
             </div>
         </div>

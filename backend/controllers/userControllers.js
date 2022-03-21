@@ -38,7 +38,9 @@ exports.registerController = async (req, res) => {
             password: hashedPassword,
             displaypic
         }).save()
-        return res.status(200).json({ message: 'user registered successfully', newUser })
+        const token = await newUser.generateToken()
+
+        return res.status(200).json({ message: 'user registered successfully', newUser, token })
     } catch (error) {
         return res.status(400).json({ message: 'user register failed.' })
     }

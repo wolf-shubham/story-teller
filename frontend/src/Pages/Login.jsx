@@ -1,17 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Avatar, Button, Checkbox, FormControlLabel, TextField } from '@material-ui/core'
 import { userLoginAction } from '../stateManagement/Actions/userActions'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
     const dispatch = useDispatch()
+    const history = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const userInfo = useSelector((state) => state.userInfo)
+    const { token } = userInfo
+
+    useEffect(() => {
+        if (token) {
+            history('/home')
+        }
+    }, [history, token])
+
     const submitHandle = async (e) => {
         e.preventDefault()
-        console.log(email, password);
+        // console.log(email, password);
         dispatch(userLoginAction(email, password))
     }
 
@@ -57,7 +68,7 @@ const Login = () => {
                         color="primary"
                     >LOGIN
                     </Button>
-                    <h3 className='registerLink'>New Here ? <a href="/register">Register</a></h3>
+                    <h3 className='registerLink'>New Here ? <Link to="/register">Register</Link></h3>
                 </form>
             </div>
         </div>
