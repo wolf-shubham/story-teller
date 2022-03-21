@@ -11,12 +11,11 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const userInfo = useSelector((state) => state.userInfo)
-    const { token } = userInfo
+    const { token } = useSelector((state) => state.userInfo)
 
     useEffect(() => {
         if (token) {
-            history('/home')
+            history('/')
         }
     }, [history, token])
 

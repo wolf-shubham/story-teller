@@ -1,18 +1,26 @@
 import { TextField } from '@material-ui/core'
 import { Avatar } from '@material-ui/core'
 import { Button } from '@material-ui/core'
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
 import { userRegisterAction } from '../stateManagement/Actions/userActions'
 
 const Register = () => {
 
     const dispatch = useDispatch()
-
+    const history = useNavigate()
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const { token } = useSelector((state) => state.userInfo)
+
+    useEffect(() => {
+        if (token) {
+            history('/')
+        }
+    }, [history, token])
 
     const submitHandler = (e) => {
         e.preventDefault()
