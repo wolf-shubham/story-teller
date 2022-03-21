@@ -47,7 +47,7 @@ export const userDetailsAction = () => async (dispatch) => {
         }
         const { data } = await axios.get('/user/myprofile', config)
         // console.log(data);
-        dispatch({ type: 'USER_DETAILS_SUCCESS', payload: data })
+        dispatch({ type: 'USER_DETAILS_SUCCESS', payload: data.user })
     } catch (error) {
         dispatch({ type: 'USER_DETAILS_FAILURE', payload: error })
     }

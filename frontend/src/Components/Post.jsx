@@ -1,6 +1,8 @@
 import { Button } from '@material-ui/core'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { likeUnlikePostAction } from '../stateManagement/Actions/postActions'
 
 const Post = ({
     postId,
@@ -12,17 +14,27 @@ const Post = ({
     authorId
 }) => {
 
-
+    const dispatch = useDispatch()
     const [liked, setLiked] = useState(false)
     const [likesUser, setLikesUser] = useState(false)
-    const [addComment, setAddComment] = useState('')
+    // const [addComment, setAddComment] = useState('')
     const [allComments, setAllComments] = useState(false)
+
+    const { user } = useSelector((state) => state.userDetails)
 
     const handleLike = async () => {
         setLiked(!liked)
-        // dispatch(likePostsAction(postId))
+        dispatch(likeUnlikePostAction(postId))
         // dispatch(userPostsAction());
     }
+
+    useEffect(() => {
+        likes.forEach((item) => {
+            if (item._id === user._id) {
+                setLiked(true)
+            }
+        })
+    }, [likes, user._id])
 
 
     return (
