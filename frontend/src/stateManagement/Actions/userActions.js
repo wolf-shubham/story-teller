@@ -46,9 +46,28 @@ export const userDetailsAction = () => async (dispatch) => {
             }
         }
         const { data } = await axios.get('/user/myprofile', config)
-        console.log(data);
+        // console.log(data);
         dispatch({ type: 'USER_DETAILS_SUCCESS', payload: data })
     } catch (error) {
         dispatch({ type: 'USER_DETAILS_FAILURE', payload: error })
+    }
+}
+
+
+export const getAllUsersAction = () => async (dispatch) => {
+    try {
+        dispatch({ type: 'GET_ALL_USER_REQUEST' })
+        const token = JSON.parse(localStorage.getItem('token'))
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        const { data } = await axios.get('/user/allusers', config)
+        // console.log(data);
+        dispatch({ type: 'GET_ALL_USER_SUCCESS', payload: data.users })
+    } catch (error) {
+        dispatch({ type: 'GET_ALL_USER_FAILURE', payload: error })
     }
 }

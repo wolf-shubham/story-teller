@@ -30,7 +30,7 @@ const Post = ({
             <Link to={`/post/${postId}`}>
                 <h3>{caption}</h3>
             </Link>
-            <img src={authorImage} alt="author pic" />
+            <img src={authorImage} alt="author pic" style={{ width: '35px', borderRadius: '50%' }} />
             <Link to={`/user/${authorId}`}><h4>{authorName}</h4></Link>
 
             <Button onClick={handleLike} style={{ border: 'none' }}>

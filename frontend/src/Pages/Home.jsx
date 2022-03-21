@@ -3,18 +3,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import Post from '../Components/Post'
 import User from '../Components/User'
 import { followingUsersPostsAction } from '../stateManagement/Actions/postActions'
-import { userDetailsAction } from '../stateManagement/Actions/userActions'
+import { getAllUsersAction, userDetailsAction } from '../stateManagement/Actions/userActions'
 
 const Home = () => {
 
     const dispatch = useDispatch()
 
     const { loading, posts, error } = useSelector(state => state.postsOfFollowingUsers)
-    console.log(posts);
+    const { loading: userLoading, users, error: userError } = useSelector(state => state.allUsers)
+    // console.log(posts);
 
     useEffect(() => {
         dispatch(userDetailsAction())
         dispatch(followingUsersPostsAction())
+        dispatch(getAllUsersAction())
     }, [dispatch])
 
     return (
@@ -30,13 +32,14 @@ const Home = () => {
                     posts && posts.length > 0
                         ? posts.map((post) => (
                             <Post
-                                postId={'1234'}
-                                caption={'post caption'}
-                                likes
-                                comments
-                                authorImage={''}
-                                authorName={'shubham'}
-                                authorId={'12345'}
+                                key={post._id}
+                                postId={post._id}
+                                caption={post.body}
+                                likes={post.likes}
+                                comments={post.comments}
+                                authorImage={post.author.displaypic}
+                                authorName={post.author.name}
+                                authorId={post.author._id}
 
                             />
                         ))
@@ -46,11 +49,21 @@ const Home = () => {
             </div>
             <br />
             <div className="rightContainer">
-                <User
-                    userId={'1234'}
-                    avatar={'https'}
-                    name={'shubham'}
-                />
+                <h2>users</h2>
+                <br />
+                {
+                    users && users.length > 0
+                        ? users.map((user) => (
+                            <User
+                                key={user._id}
+                                userId={user._id}
+                                avatar={user.displaypic}
+                                name={user.name}
+                            />
+                        ))
+                        : <h2>No Users Available.</h2>
+                }
+
             </div>
         </div>
     )
