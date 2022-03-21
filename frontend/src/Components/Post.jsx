@@ -2,7 +2,7 @@ import { Button } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { likeUnlikePostAction } from '../stateManagement/Actions/postActions'
+import { followingUsersPostsAction, likeUnlikePostAction } from '../stateManagement/Actions/postActions'
 
 const Post = ({
     postId,
@@ -25,7 +25,8 @@ const Post = ({
     const handleLike = async () => {
         setLiked(!liked)
         dispatch(likeUnlikePostAction(postId))
-        // dispatch(userPostsAction());
+        dispatch(followingUsersPostsAction())
+
     }
 
     useEffect(() => {
