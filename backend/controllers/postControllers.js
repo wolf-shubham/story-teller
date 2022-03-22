@@ -92,12 +92,13 @@ exports.followingUsersPosts = async (req, res) => {
             author: {
                 $in: user.following
             }
-        }).populate('author likes comments.comment')
+        }).populate('author likes comments.commentPostedBy')
         return res.status(200).json({ posts: posts.reverse() })
     } catch (error) {
         return res.status(500).json({ message: 'network error' })
     }
 }
+
 
 
 exports.addComment = async (req, res) => {
