@@ -51,7 +51,7 @@ const Post = ({
 
 
     return (
-        <div>
+        <div style={{ border: '2px solid darkgrey', margin: '10px', padding: '10px' }}>
             <Link to={`/post/${postId}`}>
                 <h3>{caption}</h3>
             </Link>
@@ -98,7 +98,7 @@ const Post = ({
                 
             </Dialog> */}
             <div className="DialogBox">
-                <h4>Comments...</h4>
+                <h2>Comments...</h2>
                 {comments.map((comment) => (
                     <Comment
                         key={comment._id}

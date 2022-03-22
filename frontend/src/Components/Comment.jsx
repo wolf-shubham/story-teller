@@ -13,7 +13,7 @@ const Comment = ({
         <div>
             <Link to={`user/${userId}`}>{name}</Link>
             <img src={avatar} alt="author pic" style={{ width: '35px', borderRadius: '50%' }} />
-            <h3>{comment}</h3>
+            <h4>{comment}</h4>
         </div>
     )
 }

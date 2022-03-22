@@ -25,8 +25,8 @@ const Home = () => {
             <br />
             <div className="leftContainer">left container</div>
             <br />
-            <div className="centreContainer">
-                <h2>posts...</h2>
+            <div className="centreContainer" >
+                <h2 >posts...</h2>
                 <br />
                 {
                     posts && posts.length > 0
@@ -45,6 +45,7 @@ const Home = () => {
                         ))
                         : <h2>No Posts Found.</h2>
                 }
+
 
             </div>
             <br />
