@@ -2,8 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from "redux-thunk"
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { getAllUsersReducer, userDetailsReducer, userLoginRegisterReducer } from './Reducers/userReducers'
-import { followingUsersPostsReducer, likeUnlikePostReducer } from './Reducers/postReducers'
-import { likeUnlikePostAction } from './Actions/postActions'
+import { commentOnPostReducer, followingUsersPostsReducer, likeUnlikePostReducer } from './Reducers/postReducers'
 
 const reducers = combineReducers({
     userInfo: userLoginRegisterReducer,
@@ -11,6 +10,7 @@ const reducers = combineReducers({
     postsOfFollowingUsers: followingUsersPostsReducer,
     allUsers: getAllUsersReducer,
     likes: likeUnlikePostReducer,
+    addComment: commentOnPostReducer,
 })
 
 const userAlreadyLoggedIn = localStorage.getItem('token')

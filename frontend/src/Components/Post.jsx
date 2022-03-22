@@ -1,8 +1,9 @@
-import { Button } from '@material-ui/core'
+import { Button, Dialog } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { followingUsersPostsAction, likeUnlikePostAction } from '../stateManagement/Actions/postActions'
+import { commentOnPostAction, followingUsersPostsAction, likeUnlikePostAction } from '../stateManagement/Actions/postActions'
+import User from './User'
 
 const Post = ({
     postId,
@@ -11,22 +12,32 @@ const Post = ({
     comments = [],
     authorImage,
     authorName,
-    authorId
+    authorId,
+    isLogedIn = false
 }) => {
 
     const dispatch = useDispatch()
     const [liked, setLiked] = useState(false)
     const [likesUser, setLikesUser] = useState(false)
-    // const [addComment, setAddComment] = useState('')
+    const [addComment, setAddComment] = useState('')
     const [allComments, setAllComments] = useState(false)
 
     const { user } = useSelector((state) => state.userDetails)
 
     const handleLike = async () => {
         setLiked(!liked)
-        dispatch(likeUnlikePostAction(postId))
-        dispatch(followingUsersPostsAction())
+        await dispatch(likeUnlikePostAction(postId))
+        if (isLogedIn) {
+            console.log('user posts')
+        } else {
+            dispatch(followingUsersPostsAction())
+        }
+    }
 
+    const addCommentHandler = async (e) => {
+        e.preventDefault()
+        await dispatch(commentOnPostAction(postId, addComment))
+        // dispatch(followingUsersPosts())
     }
 
     useEffect(() => {
@@ -53,12 +64,49 @@ const Post = ({
                 }
             </Button>
             <br />
-            <Button style={{ border: 'none' }} onClick={() => setLikesUser(!likesUser)} >
+            <Button
+                style={{ border: 'none' }}
+                onClick={() => setLikesUser(!likesUser)}
+                disabled={likes.length === 0 ? true : false} >
                 <h3>{likes.length} likes</h3>
             </Button>
             <Button style={{ border: 'none' }} onClick={() => setAllComments(!allComments)} disabled={comments.length === 0 ? true : false}>
                 <h3>{comments.length} comments</h3>
             </Button>
+            <Dialog open={likesUser} onClose={() => setLikesUser(!likesUser)}>
+                <div className="DialogBox">
+                    <h4>Liked By</h4>
+                    {likes.map((like) => (
+                        <User
+                            key={like._id}
+                            userId={like._id}
+                            name={like.name}
+                            avatar={like.displaypic}
+                        />
+                    ))}
+                </div>
+            </Dialog>
+            <form onSubmit={addCommentHandler}>
+                <input type="text"
+                    value={addComment}
+                    onChange={(e) => setAddComment(e.target.value)}
+                    placeholder='add comment..' />
+                <button type="submit">add</button>
+            </form>
+            <Dialog open={allComments} onClose={() => setAllComments(!allComments)}>
+                <div className="DialogBox">
+                    <h4>Comments...</h4>
+                    {/* {comments.map((comment) => (
+                        <Comment
+                            key={comment._id}
+                            userId={comment.commentPostedBy._id}
+                            name={comment.commentPostedBy.name}
+                            displaypic={comment.commentPostedBy.displaypic}
+                            comment={comment.text}
+                        />
+                    ))} */}
+                </div>
+            </Dialog>
         </div>
     )
 }
