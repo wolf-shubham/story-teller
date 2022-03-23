@@ -5,6 +5,9 @@ import {
     LIKE_POST_FAILURE,
     LIKE_POST_REQUEST,
     LIKE_POST_SUCCESS,
+    MY_POST_FAILURE,
+    MY_POST_REQUEST,
+    MY_POST_SUCCESS,
     POST_COMMENT_FAILURE,
     POST_COMMENT_REQUEST,
     POST_COMMENT_SUCCESS
@@ -66,6 +69,28 @@ export const commentOnPostReducer = (state = {}, action) => {
                 message: action.payload
             }
         case POST_COMMENT_FAILURE:
+            return {
+                loading: false,
+                error: action.payload
+            }
+        default:
+            return state
+    }
+}
+
+
+export const loggedUserPostsReducer = (state = {}, action) => {
+    switch (action.type) {
+        case MY_POST_REQUEST:
+            return {
+                loading: true
+            }
+        case MY_POST_SUCCESS:
+            return {
+                loading: false,
+                myPosts: action.payload
+            }
+        case MY_POST_FAILURE:
             return {
                 loading: false,
                 error: action.payload

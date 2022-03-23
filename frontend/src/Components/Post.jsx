@@ -31,7 +31,7 @@ const Post = ({
         if (isLogedIn) {
             console.log('user posts')
         } else {
-            dispatch(followingUsersPostsAction())
+            await dispatch(followingUsersPostsAction())
         }
     }
 
@@ -39,6 +39,11 @@ const Post = ({
         e.preventDefault()
         await dispatch(commentOnPostAction(postId, addComment))
         // dispatch(followingUsersPosts())
+        if (isLogedIn) {
+            console.log('user posts')
+        } else {
+            await dispatch(followingUsersPostsAction())
+        }
     }
 
     useEffect(() => {
@@ -99,15 +104,18 @@ const Post = ({
             </Dialog> */}
             <div className="DialogBox">
                 <h2>Comments...</h2>
-                {comments.map((comment) => (
-                    <Comment
-                        key={comment._id}
-                        userId={comment.commentPostedBy._id}
-                        name={comment.commentPostedBy.name}
-                        avatar={comment.commentPostedBy.displaypic}
-                        comment={comment.comment}
-                    />
-                ))}
+                {comments.length > 0
+                    ? comments.map((comment) => (
+                        <Comment
+                            key={comment._id}
+                            userId={comment.commentPostedBy._id}
+                            name={comment.commentPostedBy.name}
+                            avatar={comment.commentPostedBy.displaypic}
+                            comment={comment.comment}
+                        />
+                    ))
+                    : <h4>No comment yet.</h4>
+                }
             </div>
         </div>
     )

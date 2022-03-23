@@ -14,7 +14,7 @@ const Home = () => {
     // console.log(posts);
 
     useEffect(() => {
-        dispatch(userDetailsAction())
+        // dispatch(userDetailsAction())
         dispatch(followingUsersPostsAction())
         dispatch(getAllUsersAction())
     }, [dispatch])
