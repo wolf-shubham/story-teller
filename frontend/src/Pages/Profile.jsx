@@ -1,5 +1,5 @@
-import { CircularProgress } from '@material-ui/core'
-import React, { useEffect } from 'react'
+import { Button, CircularProgress, Dialog } from '@material-ui/core'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Post from '../Components/Post'
 import { loggedUserPostsAction } from '../stateManagement/Actions/postActions'
@@ -8,6 +8,9 @@ import { userDetailsAction } from '../stateManagement/Actions/userActions'
 function Profile() {
 
     const dispatch = useDispatch()
+
+    const [showFollowers, setshowFollowers] = useState(false)
+    const [showFollowing, setshowFollowing] = useState(false)
 
     const { loading, myPosts } = useSelector((state) => state.userPosts)
     const { user } = useSelector((state) => state.userInfo)
@@ -51,6 +54,44 @@ function Profile() {
                 <h3>followers : {user.followers.length}</h3>
                 <h3>post : {user.userposts.length}</h3>
             </div>
+            <Button
+                style={{ border: 'none' }}
+                onClick={() => setshowFollowers(!showFollowers)}
+                disabled={user.followers.length === 0 ? true : false} >
+                <h3>{user.followers.length} followers</h3>
+            </Button>
+            <Button
+                style={{ border: 'none' }}
+                onClick={() => setshowFollowing(!showFollowing)}
+                disabled={user.following.length === 0 ? true : false} >
+                <h3>{user.following.length} following</h3>
+            </Button>
+            <Dialog open={showFollowers} onClose={() => setshowFollowers(!showFollowers)}>
+                <div className="DialogBox">
+                    <h4>followers...</h4>
+                    {/* {likes.map((like) => (
+                        <User
+                            key={like._id}
+                            userId={like._id}
+                            name={like.name}
+                            avatar={like.displaypic}
+                        />
+                    ))} */}
+                </div>
+            </Dialog>
+            <Dialog open={showFollowing} onClose={() => setshowFollowing(!showFollowing)}>
+                <div className="DialogBox">
+                    <h4>following...</h4>
+                    {/* {likes.map((like) => (
+                        <User
+                            key={like._id}
+                            userId={like._id}
+                            name={like.name}
+                            avatar={like.displaypic}
+                        />
+                    ))} */}
+                </div>
+            </Dialog>
         </div>
     )
 }
