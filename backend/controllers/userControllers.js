@@ -81,7 +81,7 @@ exports.followUnfollowUser = async (req, res) => {
 
 exports.myProfile = async (req, res) => {
     try {
-        const user = await User.findById(req.user._id).populate('userposts')
+        const user = await User.findById(req.user._id).populate('userposts followers following')
         return res.status(200).json({ message: 'my profile', user })
     } catch (error) {
         return res.status(500).json({ message: 'network error' })
@@ -91,7 +91,7 @@ exports.myProfile = async (req, res) => {
 
 exports.getUsersProfile = async (req, res) => {
     try {
-        const user = await User.findById(req.params.id).populate('userposts')
+        const user = await User.findById(req.params.id).populate('userposts followers following')
         return res.status(200).json({ message: 'profile of users', user })
     } catch (error) {
         return res.status(500).json({ message: 'network error' })

@@ -9,7 +9,8 @@ export const userLoginAction = (email, password) => async (dispatch) => {
             }
         }
         const { data } = await axios.post('/user/login', { email, password }, config)
-        dispatch({ type: 'USER_LOGIN_SUCCESS', payload: data.token })
+        dispatch({ type: 'USER_LOGIN_SUCCESS', payload: data })
+        localStorage.setItem('userData', JSON.stringify(data.user))
         localStorage.setItem('token', JSON.stringify(data.token))
     } catch (error) {
         dispatch({ type: 'USER_LOGIN_FAILURE', payload: error })
@@ -27,7 +28,8 @@ export const userRegisterAction = (name, email, password) => async (dispatch) =>
         }
         const { data } = await axios.post('/user/register', { name, email, password }, config)
         console.log(data);
-        dispatch({ type: 'USER_REGISTER_SUCCESS', payload: data.token })
+        dispatch({ type: 'USER_REGISTER_SUCCESS', payload: data })
+        localStorage.setItem('userData', JSON.stringify(data.user))
         localStorage.setItem('token', JSON.stringify(data.token))
     } catch (error) {
         dispatch({ type: 'USER_REGISTER_FAILURE', payload: error })

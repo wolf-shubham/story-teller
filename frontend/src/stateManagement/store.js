@@ -14,15 +14,20 @@ const reducers = combineReducers({
     userPosts: loggedUserPostsReducer,
 })
 
-const userAlreadyLoggedIn = localStorage.getItem('token')
+const userAlreadyLoggedIn = localStorage.getItem('userData')
+    ? JSON.parse(localStorage.getItem('userData'))
+    : null
+
+const userToken = localStorage.getItem('token')
     ? JSON.parse(localStorage.getItem('token'))
     : null
 
 const isAuthenticated = userAlreadyLoggedIn ? true : false
 const initialState = {
     userInfo: {
-        token: userAlreadyLoggedIn,
-        isAuthenticated: isAuthenticated
+        token: userToken,
+        isAuthenticated: isAuthenticated,
+        user: userAlreadyLoggedIn
     }
 }
 

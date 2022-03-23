@@ -26,7 +26,7 @@ export const userLoginRegisterReducer = (state = {}, action) => {
         case USER_REGISTER_SUCCESS:
             return {
                 loading: false,
-                token: action.payload,
+                userData: action.payload,
                 isAuthenticated: true
             }
         case USER_LOGIN_FAILURE:
