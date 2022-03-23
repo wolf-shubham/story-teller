@@ -2,6 +2,7 @@ import { Button, CircularProgress, Dialog } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Post from '../Components/Post'
+import User from '../Components/User'
 import { loggedUserPostsAction } from '../stateManagement/Actions/postActions'
 import { userDetailsAction } from '../stateManagement/Actions/userActions'
 
@@ -48,48 +49,53 @@ function Profile() {
             </div>
             <div className="rightContainer">
                 <h2>user profile</h2>
-                <img src={user.displaypic} alt="author pic" style={{ width: '50px', borderRadius: '50%' }} />
-                <h3>{user.name}</h3>
-                <h3>following : {user.following.length}</h3>
+                <img src={userData?.displaypic} alt="author pic" style={{ width: '50px', borderRadius: '50%' }} />
+                <h3>{userData?.name}</h3>
+                {/* <h3>following : {user.following.length}</h3>
                 <h3>followers : {user.followers.length}</h3>
-                <h3>post : {user.userposts.length}</h3>
+                <h3>post : {user.userposts.length}</h3> */}
             </div>
             <Button
                 style={{ border: 'none' }}
                 onClick={() => setshowFollowers(!showFollowers)}
-                disabled={user.followers.length === 0 ? true : false} >
-                <h3>{user.followers.length} followers</h3>
+                disabled={userData?.followers.length === 0 ? true : false} >
+                <h3>{userData?.followers.length} followers</h3>
             </Button>
             <Button
                 style={{ border: 'none' }}
                 onClick={() => setshowFollowing(!showFollowing)}
-                disabled={user.following.length === 0 ? true : false} >
-                <h3>{user.following.length} following</h3>
+                disabled={userData?.following.length === 0 ? true : false} >
+                <h3>{userData?.following.length} following</h3>
+            </Button>
+            <Button
+                style={{ border: 'none' }}
+                disabled={userData?.userposts.length === 0 ? true : false} >
+                <h3>{userData?.userposts.length} posts</h3>
             </Button>
             <Dialog open={showFollowers} onClose={() => setshowFollowers(!showFollowers)}>
                 <div className="DialogBox">
                     <h4>followers...</h4>
-                    {/* {likes.map((like) => (
+                    {userData && userData?.followers.map((followers) => (
                         <User
-                            key={like._id}
-                            userId={like._id}
-                            name={like.name}
-                            avatar={like.displaypic}
+                            key={followers._id}
+                            userId={followers._id}
+                            name={followers.name}
+                            avatar={followers.displaypic}
                         />
-                    ))} */}
+                    ))}
                 </div>
             </Dialog>
             <Dialog open={showFollowing} onClose={() => setshowFollowing(!showFollowing)}>
                 <div className="DialogBox">
                     <h4>following...</h4>
-                    {/* {likes.map((like) => (
+                    {userData && userData?.following.map((following) => (
                         <User
-                            key={like._id}
-                            userId={like._id}
-                            name={like.name}
-                            avatar={like.displaypic}
+                            key={following._id}
+                            userId={following._id}
+                            name={following.name}
+                            avatar={following.displaypic}
                         />
-                    ))} */}
+                    ))}
                 </div>
             </Dialog>
         </div>
