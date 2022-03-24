@@ -9,6 +9,7 @@ import {
 import {
     commentOnPostReducer,
     createPostReducer,
+    deletePostReducer,
     followingUsersPostsReducer,
     likeUnlikePostReducer,
     loggedUserPostsReducer
@@ -23,6 +24,7 @@ const reducers = combineReducers({
     addComment: commentOnPostReducer,
     userPosts: loggedUserPostsReducer,
     createPost: createPostReducer,
+    deletePost: deletePostReducer,
 })
 
 const userAlreadyLoggedIn = localStorage.getItem('userData')

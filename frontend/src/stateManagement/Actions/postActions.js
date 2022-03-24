@@ -3,6 +3,9 @@ import {
     CREATE_POST_FAILURE,
     CREATE_POST_REQUEST,
     CREATE_POST_SUCCESS,
+    DELETE_POST_FAILURE,
+    DELETE_POST_REQUEST,
+    DELETE_POST_SUCCESS,
     FOLLOWING_USERS_POST_FAILURE,
     FOLLOWING_USERS_POST_REQUEST,
     FOLLOWING_USERS_POST_SUCCESS,
@@ -108,5 +111,24 @@ export const createPostAction = (text) => async (dispatch) => {
 
     } catch (error) {
         dispatch({ type: CREATE_POST_FAILURE, payload: error })
+    }
+}
+
+
+export const deletePostAction = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: DELETE_POST_REQUEST })
+        const token = JSON.parse(localStorage.getItem('token'))
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        const { data } = await axios.delete(`/post/deletepost/${id}`, config)
+        dispatch({ type: DELETE_POST_SUCCESS, payload: data.message })
+
+    } catch (error) {
+        dispatch({ type: DELETE_POST_FAILURE, payload: error })
     }
 }

@@ -5,6 +5,9 @@ import {
     CREATE_POST_FAILURE,
     CREATE_POST_REQUEST,
     CREATE_POST_SUCCESS,
+    DELETE_POST_FAILURE,
+    DELETE_POST_REQUEST,
+    DELETE_POST_SUCCESS,
     FOLLOWING_USERS_POST_FAILURE,
     FOLLOWING_USERS_POST_REQUEST,
     FOLLOWING_USERS_POST_SUCCESS,
@@ -119,6 +122,28 @@ export const createPostReducer = (state = {}, action) => {
                 createPost: action.payload
             }
         case CREATE_POST_FAILURE:
+            return {
+                loading: false,
+                error: action.payload
+            }
+        default:
+            return state
+    }
+}
+
+
+export const deletePostReducer = (state = {}, action) => {
+    switch (action.type) {
+        case DELETE_POST_REQUEST:
+            return {
+                loading: true
+            }
+        case DELETE_POST_SUCCESS:
+            return {
+                loading: false,
+                deletePost: action.payload
+            }
+        case DELETE_POST_FAILURE:
             return {
                 loading: false,
                 error: action.payload

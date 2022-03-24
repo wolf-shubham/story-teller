@@ -2,7 +2,7 @@ import { Button, Dialog } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { commentOnPostAction, followingUsersPostsAction, likeUnlikePostAction, loggedUserPostsAction } from '../stateManagement/Actions/postActions'
+import { commentOnPostAction, deletePostAction, followingUsersPostsAction, likeUnlikePostAction, loggedUserPostsAction } from '../stateManagement/Actions/postActions'
 import Comment from './Comment'
 import User from './User'
 
@@ -40,7 +40,16 @@ const Post = ({
         await dispatch(commentOnPostAction(postId, addComment))
         // dispatch(followingUsersPosts())
         if (isLogedIn) {
-            console.log('user posts')
+            await dispatch(loggedUserPostsAction())
+        } else {
+            await dispatch(followingUsersPostsAction())
+        }
+    }
+
+    const deletePostHandler = async (e) => {
+        e.preventDefault()
+        await dispatch(deletePostAction(postId))
+        if (isLogedIn) {
             await dispatch(loggedUserPostsAction())
         } else {
             await dispatch(followingUsersPostsAction())
@@ -69,6 +78,9 @@ const Post = ({
                     ? <span className='material-icons' style={{ color: 'red' }}>favorite</span>
                     : <i className='material-icons' >favorite_border</i>
                 }
+            </Button>
+            <Button onClick={deletePostHandler} style={{ border: 'none' }}>
+                <span className='material-icons' >delete</span>
             </Button>
             <br />
             <Button
