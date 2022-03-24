@@ -38,7 +38,6 @@ const Post = ({
     const addCommentHandler = async (e) => {
         e.preventDefault()
         await dispatch(commentOnPostAction(postId, addComment))
-        // dispatch(followingUsersPosts())
         if (isLogedIn) {
             await dispatch(loggedUserPostsAction())
         } else {
@@ -79,9 +78,12 @@ const Post = ({
                     : <i className='material-icons' >favorite_border</i>
                 }
             </Button>
-            <Button onClick={deletePostHandler} style={{ border: 'none' }}>
-                <span className='material-icons' >delete</span>
-            </Button>
+            {isLogedIn
+                ? <Button onClick={deletePostHandler} style={{ border: 'none' }}>
+                    <span className='material-icons' >delete</span>
+                </Button>
+                : null}
+
             <br />
             <Button
                 style={{ border: 'none' }}

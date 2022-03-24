@@ -17,12 +17,15 @@ function Profile() {
     const { loading, myPosts } = useSelector((state) => state.userPosts)
     const { user } = useSelector((state) => state.userInfo)
     const { loading: userLoading, user: userData } = useSelector((state) => state.userDetails)
+    const { createPost } = useSelector((state) => state.createPost)
+    const { deletePost } = useSelector((state) => state.deletePost)
+
     // console.log(userData?.displaypic);
 
     useEffect(() => {
         dispatch(userDetailsAction())
         dispatch(loggedUserPostsAction())
-    }, [dispatch])
+    }, [dispatch, createPost, deletePost])
 
     return (
         <div>

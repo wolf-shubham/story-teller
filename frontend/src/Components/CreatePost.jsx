@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { createPostAction } from '../stateManagement/Actions/postActions'
 
 const CreatePost = () => {
@@ -7,16 +7,10 @@ const CreatePost = () => {
     const dispatch = useDispatch()
 
     const [post, setPost] = useState('')
-    const { createPost } = useSelector((state) => state.userPosts)
-
-
-    useEffect(() => {
-
-    }, [createPost])
 
     const submitPostHandler = async (e) => {
         e.preventDefault()
-        dispatch(createPostAction(post))
+        await dispatch(createPostAction(post))
     }
 
     return (
