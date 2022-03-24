@@ -108,10 +108,17 @@ export const deleteProfileAction = (displaypic) => async (dispatch) => {
             }
         }
         const { data } = await axios.delete('/user/deleteprofile', config)
-        localStorage.removeItem('userData')
-        localStorage.removeItem('token')
+        // localStorage.removeItem('userData')
+        // localStorage.removeItem('token')
         dispatch({ type: 'DELETE_PROFILE_SUCCESS', payload: data.message })
     } catch (error) {
         dispatch({ type: 'DELETE_PROFILE_FAILURE', payload: error })
     }
+}
+
+
+export const userLogoutAction = () => async (dispatch) => {
+    localStorage.removeItem('userData')
+    localStorage.removeItem('token')
+    dispatch({ type: 'USER_LOGOUT' })
 }

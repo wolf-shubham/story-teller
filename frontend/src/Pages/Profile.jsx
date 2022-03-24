@@ -6,7 +6,7 @@ import CreatePost from '../Components/CreatePost'
 import Post from '../Components/Post'
 import User from '../Components/User'
 import { loggedUserPostsAction } from '../stateManagement/Actions/postActions'
-import { deleteProfileAction, userDetailsAction } from '../stateManagement/Actions/userActions'
+import { deleteProfileAction, userDetailsAction, userLogoutAction } from '../stateManagement/Actions/userActions'
 
 function Profile() {
 
@@ -25,7 +25,12 @@ function Profile() {
     // console.log(userData?.displaypic);
     const deleteAccount = () => {
         dispatch(deleteProfileAction())
-        console.log('account deleted')
+        dispatch(userLogoutAction())
+        navigate('/')
+    }
+
+    const logoutHandler = () => {
+        dispatch(userLogoutAction())
         navigate('/')
     }
 
@@ -121,6 +126,11 @@ function Profile() {
                     style={{ border: '2px solid darkgrey' }}
                     onClick={deleteAccount}>
                     Delete Account
+                </Button>
+                <Button
+                    style={{ border: '2px solid darkgrey' }}
+                    onClick={logoutHandler}>
+                    LogOut
                 </Button>
             </div>
         </div>
