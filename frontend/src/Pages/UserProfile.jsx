@@ -6,7 +6,7 @@ import CreatePost from '../Components/CreatePost'
 import Post from '../Components/Post'
 import User from '../Components/User'
 import { otherUserPostsAction } from '../stateManagement/Actions/postActions'
-import { otherUsersProfileAction, userDetailsAction } from '../stateManagement/Actions/userActions'
+import { followUnfollowUsersAction, otherUsersProfileAction, userDetailsAction } from '../stateManagement/Actions/userActions'
 
 
 const UserProfile = () => {
@@ -21,13 +21,15 @@ const UserProfile = () => {
 
     const { loading, posts } = useSelector((state) => state.otherUserPosts)
     const { loading: otherUserLoading, user } = useSelector((state) => state.otherUser)
-    // const { loading: userLoading, user: userData } = useSelector((state) => state.userDetails)
+    const { loading: userLoading, user: userData } = useSelector((state) => state.userDetails)
     const { message: likeMessage } = useSelector((state) => state.likes)
     const { message: commentAdded } = useSelector((state) => state.addComment)
+    const { message: follow } = useSelector((state) => state.followUnfollow)
 
-    console.log(posts)
+    // console.log(posts)
     const followHandle = () => {
         setFollowing(!following)
+        dispatch(followUnfollowUsersAction(user._id))
     }
 
 
@@ -35,7 +37,18 @@ const UserProfile = () => {
         dispatch(userDetailsAction())
         dispatch(otherUsersProfileAction(params.id))
         dispatch(otherUserPostsAction(params.id))
+
     }, [dispatch, params.id, commentAdded])
+
+    useEffect(() => {
+        if (user) {
+            user.followers.forEach((item) => {
+                if (item._id === userData?._id) {
+                    setFollowing(true)
+                }
+            })
+        }
+    }, [userData?._id, user])
 
     return (
         <div>

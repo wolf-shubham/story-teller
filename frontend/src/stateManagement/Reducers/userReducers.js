@@ -2,6 +2,9 @@ import {
     DELETE_PROFILE_FAILURE,
     DELETE_PROFILE_REQUEST,
     DELETE_PROFILE_SUCCESS,
+    FOLLOW_USER_FAILURE,
+    FOLLOW_USER_REQUEST,
+    FOLLOW_USER_SUCCESS,
     GET_ALL_USER_FAILURE,
     GET_ALL_USER_REQUEST,
     GET_ALL_USER_SUCCESS,
@@ -177,6 +180,28 @@ export const otherusersProfileReducer = (state = {}, action) => {
                 user: action.payload
             }
         case OTHER_USERS_PROFILE_FAILURE:
+            return {
+                loading: false,
+                error: action.payload
+            }
+        default:
+            return state
+    }
+}
+
+
+export const followUnfollowUserReducer = (state = {}, action) => {
+    switch (action.type) {
+        case FOLLOW_USER_REQUEST:
+            return {
+                loading: true,
+            }
+        case FOLLOW_USER_SUCCESS:
+            return {
+                loading: false,
+                message: action.payload
+            }
+        case FOLLOW_USER_FAILURE:
             return {
                 loading: false,
                 error: action.payload

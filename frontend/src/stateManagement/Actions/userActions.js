@@ -1,4 +1,9 @@
 import axios from "axios"
+import {
+    FOLLOW_USER_FAILURE,
+    FOLLOW_USER_REQUEST,
+    FOLLOW_USER_SUCCESS
+} from "../Constants/userConstants"
 
 export const userLoginAction = (email, password) => async (dispatch) => {
     try {
@@ -131,6 +136,24 @@ export const otherUsersProfileAction = (id) => async (dispatch) => {
         dispatch({ type: 'OTHER_USERS_PROFILE_SUCCESS', payload: data.user })
     } catch (error) {
         dispatch({ type: 'OTHER_USERs_PROFILE_FAILURE', payload: error })
+    }
+}
+
+
+export const followUnfollowUsersAction = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: FOLLOW_USER_REQUEST })
+        const token = JSON.parse(localStorage.getItem('token'))
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        const { data } = await axios.get(`/user/followuser/${id}`, config)
+        dispatch({ type: FOLLOW_USER_SUCCESS, payload: data.message })
+    } catch (error) {
+        dispatch({ type: FOLLOW_USER_FAILURE, payload: error })
     }
 }
 
