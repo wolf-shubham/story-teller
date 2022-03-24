@@ -109,6 +109,26 @@ exports.getAllUsers = async (req, res) => {
 }
 
 
+exports.updateUserProfile = async (req, res) => {
+    try {
+        const user = await User.findById(req.user._id)
+        // console.log(user);
+        if (user) {
+            user.displaypic = req.body.displaypic || user.displaypic
+            await user.save()
+            // console.log(user);
+            return res.status(200).json({ message: 'profile updated', user })
+
+        }
+        else {
+            return res.status(400).json({ error })
+        }
+    } catch (error) {
+        return res.status(500).json({ message: 'network error' })
+    }
+}
+
+
 exports.deleteMyProfile = async (req, res) => {
     try {
         const user = await User.findById(req.user._id)

@@ -2,6 +2,9 @@ import {
     GET_ALL_USER_FAILURE,
     GET_ALL_USER_REQUEST,
     GET_ALL_USER_SUCCESS,
+    UPDATE_USER_PROFILE_FAILURE,
+    UPDATE_USER_PROFILE_REQUEST,
+    UPDATE_USER_PROFILE_SUCCESS,
     USER_DETAILS_FAILURE,
     USER_DETAILS_REQUEST,
     USER_DETAILS_SUCCESS,
@@ -102,6 +105,28 @@ export const getAllUsersReducer = (state = {}, action) => {
                 users: action.payload
             }
         case GET_ALL_USER_FAILURE:
+            return {
+                loading: false,
+                error: action.payload
+            }
+        default:
+            return state
+    }
+}
+
+
+export const updateUserProfileReducer = (state = {}, action) => {
+    switch (action.type) {
+        case UPDATE_USER_PROFILE_REQUEST:
+            return {
+                loading: true,
+            }
+        case UPDATE_USER_PROFILE_SUCCESS:
+            return {
+                loading: false,
+                message: action.payload
+            }
+        case UPDATE_USER_PROFILE_FAILURE:
             return {
                 loading: false,
                 error: action.payload

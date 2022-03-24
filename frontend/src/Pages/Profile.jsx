@@ -1,6 +1,7 @@
 import { Button, CircularProgress, Dialog } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import CreatePost from '../Components/CreatePost'
 import Post from '../Components/Post'
 import User from '../Components/User'
@@ -105,6 +106,12 @@ function Profile() {
                     ))}
                 </div>
             </Dialog>
+            <div>
+                <Button
+                    style={{ border: '2px solid darkgrey' }}>
+                    <Link to='/updateprofile'>update profile</Link>
+                </Button>
+            </div>
         </div>
     )
 }

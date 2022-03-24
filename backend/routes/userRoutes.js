@@ -1,5 +1,5 @@
 const route = require('express')()
-const { loginController, registerController, followUnfollowUser, deleteMyProfile, myProfile, getUsersProfile, getAllUsers } = require('../controllers/userControllers')
+const { loginController, registerController, followUnfollowUser, deleteMyProfile, myProfile, getUsersProfile, getAllUsers, updateUserProfile } = require('../controllers/userControllers')
 const { isAuthenticated } = require('../middlewares/authMiddleware')
 
 
@@ -14,6 +14,8 @@ route.get('/myprofile', isAuthenticated, myProfile)
 route.get('/userprofile/:id', isAuthenticated, getUsersProfile)
 
 route.get('/allusers', isAuthenticated, getAllUsers)
+
+route.put('/updateprofile', isAuthenticated, updateUserProfile)
 
 route.delete('/deleteprofile', isAuthenticated, deleteMyProfile)
 

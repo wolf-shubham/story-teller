@@ -6,6 +6,7 @@ import LandingPage from './Pages/LandingPage';
 import Login from './Pages/Login';
 import Profile from './Pages/Profile';
 import Register from './Pages/Register';
+import UpdateProfile from './Pages/UpdateProfile';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/updateprofile' element={<UpdateProfile />} />
       </Routes>
     </BrowserRouter>
   )

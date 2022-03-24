@@ -73,3 +73,25 @@ export const getAllUsersAction = () => async (dispatch) => {
         dispatch({ type: 'GET_ALL_USER_FAILURE', payload: error })
     }
 }
+
+
+export const updateUserProfileAction = (displaypic) => async (dispatch) => {
+    try {
+        dispatch({ type: 'UPDATE_USER_PROFILE_REQUEST' })
+        console.log(displaypic);
+        const token = JSON.parse(localStorage.getItem('token'))
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        const { data } = await axios.put('/user/updateprofile', {
+            displaypic
+        }, config)
+        dispatch({ type: 'UPDATE_USER_PROFILE_SUCCESS', payload: data.message })
+        dispatch({ type: 'USER_DETAILS_SUCCESS', payload: data.user })
+    } catch (error) {
+        dispatch({ type: 'UPDATE_USER_PROFILE_FAILURE', payload: error })
+    }
+}

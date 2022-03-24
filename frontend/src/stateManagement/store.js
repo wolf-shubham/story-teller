@@ -3,6 +3,7 @@ import thunk from "redux-thunk"
 import { composeWithDevTools } from 'redux-devtools-extension'
 import {
     getAllUsersReducer,
+    updateUserProfileReducer,
     userDetailsReducer,
     userLoginRegisterReducer
 } from './Reducers/userReducers'
@@ -25,6 +26,7 @@ const reducers = combineReducers({
     userPosts: loggedUserPostsReducer,
     createPost: createPostReducer,
     deletePost: deletePostReducer,
+    profileUpdate: updateUserProfileReducer,
 })
 
 const userAlreadyLoggedIn = localStorage.getItem('userData')
