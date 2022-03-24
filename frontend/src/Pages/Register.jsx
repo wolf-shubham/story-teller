@@ -22,9 +22,10 @@ const Register = () => {
         }
     }, [history, token])
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault()
-        dispatch(userRegisterAction(name, email, password))
+        await dispatch(userRegisterAction(name, email, password))
+        history('/')
     }
 
     return (

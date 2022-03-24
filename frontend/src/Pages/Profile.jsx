@@ -1,16 +1,17 @@
 import { Button, CircularProgress, Dialog } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import CreatePost from '../Components/CreatePost'
 import Post from '../Components/Post'
 import User from '../Components/User'
 import { loggedUserPostsAction } from '../stateManagement/Actions/postActions'
-import { userDetailsAction } from '../stateManagement/Actions/userActions'
+import { deleteProfileAction, userDetailsAction } from '../stateManagement/Actions/userActions'
 
 function Profile() {
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [showFollowers, setshowFollowers] = useState(false)
     const [showFollowing, setshowFollowing] = useState(false)
@@ -22,6 +23,11 @@ function Profile() {
     const { deletePost } = useSelector((state) => state.deletePost)
 
     // console.log(userData?.displaypic);
+    const deleteAccount = () => {
+        dispatch(deleteProfileAction())
+        console.log('account deleted')
+        navigate('/')
+    }
 
     useEffect(() => {
         dispatch(userDetailsAction())
@@ -110,6 +116,11 @@ function Profile() {
                 <Button
                     style={{ border: '2px solid darkgrey' }}>
                     <Link to='/updateprofile'>update profile</Link>
+                </Button>
+                <Button
+                    style={{ border: '2px solid darkgrey' }}
+                    onClick={deleteAccount}>
+                    Delete Account
                 </Button>
             </div>
         </div>

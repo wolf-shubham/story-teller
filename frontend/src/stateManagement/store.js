@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from "redux-thunk"
 import { composeWithDevTools } from 'redux-devtools-extension'
 import {
+    deleteProfileReducer,
     getAllUsersReducer,
     updateUserProfileReducer,
     userDetailsReducer,
@@ -27,6 +28,7 @@ const reducers = combineReducers({
     createPost: createPostReducer,
     deletePost: deletePostReducer,
     profileUpdate: updateUserProfileReducer,
+    deleteAccount: deleteProfileReducer,
 })
 
 const userAlreadyLoggedIn = localStorage.getItem('userData')

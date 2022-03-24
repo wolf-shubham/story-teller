@@ -1,4 +1,7 @@
 import {
+    DELETE_PROFILE_FAILURE,
+    DELETE_PROFILE_REQUEST,
+    DELETE_PROFILE_SUCCESS,
     GET_ALL_USER_FAILURE,
     GET_ALL_USER_REQUEST,
     GET_ALL_USER_SUCCESS,
@@ -127,6 +130,28 @@ export const updateUserProfileReducer = (state = {}, action) => {
                 message: action.payload
             }
         case UPDATE_USER_PROFILE_FAILURE:
+            return {
+                loading: false,
+                error: action.payload
+            }
+        default:
+            return state
+    }
+}
+
+
+export const deleteProfileReducer = (state = {}, action) => {
+    switch (action.type) {
+        case DELETE_PROFILE_REQUEST:
+            return {
+                loading: true,
+            }
+        case DELETE_PROFILE_SUCCESS:
+            return {
+                loading: false,
+                message: action.payload
+            }
+        case DELETE_PROFILE_FAILURE:
             return {
                 loading: false,
                 error: action.payload
