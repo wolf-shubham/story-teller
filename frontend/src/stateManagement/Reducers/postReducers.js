@@ -1,4 +1,10 @@
 import {
+    ADD_COMMENT_FAILURE,
+    ADD_COMMENT_REQUEST,
+    ADD_COMMENT_SUCCESS,
+    CREATE_POST_FAILURE,
+    CREATE_POST_REQUEST,
+    CREATE_POST_SUCCESS,
     FOLLOWING_USERS_POST_FAILURE,
     FOLLOWING_USERS_POST_REQUEST,
     FOLLOWING_USERS_POST_SUCCESS,
@@ -91,6 +97,28 @@ export const loggedUserPostsReducer = (state = {}, action) => {
                 myPosts: action.payload
             }
         case MY_POST_FAILURE:
+            return {
+                loading: false,
+                error: action.payload
+            }
+        default:
+            return state
+    }
+}
+
+
+export const createPostReducer = (state = {}, action) => {
+    switch (action.type) {
+        case CREATE_POST_REQUEST:
+            return {
+                loading: true
+            }
+        case CREATE_POST_SUCCESS:
+            return {
+                loading: false,
+                createPost: action.payload
+            }
+        case CREATE_POST_FAILURE:
             return {
                 loading: false,
                 error: action.payload

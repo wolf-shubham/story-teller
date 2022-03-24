@@ -1,6 +1,7 @@
 import { Button, CircularProgress, Dialog } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import CreatePost from '../Components/CreatePost'
 import Post from '../Components/Post'
 import User from '../Components/User'
 import { loggedUserPostsAction } from '../stateManagement/Actions/postActions'
@@ -27,6 +28,9 @@ function Profile() {
         <div>
             {loading && <CircularProgress />}
             <h1>profile</h1>
+            <br />
+            <CreatePost />
+            <br />
             <div className="leftContainer">
                 <h2>posts</h2>
                 {
@@ -41,7 +45,7 @@ function Profile() {
                                 authorImage={post.author.displaypic}
                                 authorName={post.author.name}
                                 authorId={post.author._id}
-
+                                isLogedIn={true}
                             />
                         ))
                         : <h2>No Posts Found.</h2>

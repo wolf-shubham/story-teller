@@ -23,6 +23,7 @@ const Login = () => {
         e.preventDefault()
         // console.log(email, password);
         dispatch(userLoginAction(email, password))
+        history('/')
     }
 
     return (

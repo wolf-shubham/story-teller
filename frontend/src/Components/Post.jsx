@@ -2,7 +2,7 @@ import { Button, Dialog } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { commentOnPostAction, followingUsersPostsAction, likeUnlikePostAction } from '../stateManagement/Actions/postActions'
+import { commentOnPostAction, followingUsersPostsAction, likeUnlikePostAction, loggedUserPostsAction } from '../stateManagement/Actions/postActions'
 import Comment from './Comment'
 import User from './User'
 
@@ -29,7 +29,7 @@ const Post = ({
         setLiked(!liked)
         await dispatch(likeUnlikePostAction(postId))
         if (isLogedIn) {
-            console.log('user posts')
+            await dispatch(loggedUserPostsAction())
         } else {
             await dispatch(followingUsersPostsAction())
         }
@@ -41,6 +41,7 @@ const Post = ({
         // dispatch(followingUsersPosts())
         if (isLogedIn) {
             console.log('user posts')
+            await dispatch(loggedUserPostsAction())
         } else {
             await dispatch(followingUsersPostsAction())
         }
