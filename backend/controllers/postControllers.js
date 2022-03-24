@@ -119,3 +119,20 @@ exports.addComment = async (req, res) => {
         return res.status(500).json({ message: 'network error' })
     }
 }
+
+
+exports.otherUsersposts = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+        const posts = []
+        for (let i = 0; i < user.userposts.length; i++) {
+            const post = await Post.findById(user.userposts[i]).populate(
+                "likes comments.commentPostedBy author"
+            )
+            posts.push(post)
+        }
+        return res.status(200).json({ posts, message: 'my posts' })
+    } catch (error) {
+        return res.status(404).json({ message: 'cannot access user posts' })
+    }
+}

@@ -5,6 +5,9 @@ import {
     GET_ALL_USER_FAILURE,
     GET_ALL_USER_REQUEST,
     GET_ALL_USER_SUCCESS,
+    OTHER_USERS_PROFILE_FAILURE,
+    OTHER_USERS_PROFILE_REQUEST,
+    OTHER_USERS_PROFILE_SUCCESS,
     UPDATE_USER_PROFILE_FAILURE,
     UPDATE_USER_PROFILE_REQUEST,
     UPDATE_USER_PROFILE_SUCCESS,
@@ -152,6 +155,28 @@ export const deleteProfileReducer = (state = {}, action) => {
                 message: action.payload
             }
         case DELETE_PROFILE_FAILURE:
+            return {
+                loading: false,
+                error: action.payload
+            }
+        default:
+            return state
+    }
+}
+
+
+export const otherusersProfileReducer = (state = {}, action) => {
+    switch (action.type) {
+        case OTHER_USERS_PROFILE_REQUEST:
+            return {
+                loading: true,
+            }
+        case OTHER_USERS_PROFILE_SUCCESS:
+            return {
+                loading: false,
+                user: action.payload
+            }
+        case OTHER_USERS_PROFILE_FAILURE:
             return {
                 loading: false,
                 error: action.payload

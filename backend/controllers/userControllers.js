@@ -158,6 +158,32 @@ exports.deleteMyProfile = async (req, res) => {
             await followingDelete.save()
         }
 
+        // removing comments of deleted user
+        const allPosts = await Post.find()
+
+        for (let i = 0; i < allPosts.length; i++) {
+            const post = await Post.findById(allPosts[i]._id)
+
+            for (let j = 0; j < post.comments.length; j++) {
+                if (post.comments[j].commentPostedBy === userId) {
+                    post.comments.splice(j, 1)
+                }
+            }
+            await post.save()
+        }
+
+        // removig likes of deleted user
+        for (let i = 0; i < allPosts.length; i++) {
+            const post = await Post.findById(allPosts[i]._id)
+
+            for (let j = 0; j < post.likes.length; j++) {
+                if (post.likes[j] === userId) {
+                    post.comments.splice(j, 1)
+                }
+            }
+            await post.save()
+        }
+
         return res.status(200).json({ message: 'user profile deleted' })
 
     } catch (error) {

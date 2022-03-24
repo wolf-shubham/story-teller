@@ -15,6 +15,9 @@ import {
     MY_POST_FAILURE,
     MY_POST_REQUEST,
     MY_POST_SUCCESS,
+    OTHER_USERS_POST_FAILURE,
+    OTHER_USERS_POST_REQUEST,
+    OTHER_USERS_POST_SUCCESS,
     POST_COMMENT_FAILURE,
     POST_COMMENT_REQUEST,
     POST_COMMENT_SUCCESS
@@ -130,5 +133,24 @@ export const deletePostAction = (id) => async (dispatch) => {
 
     } catch (error) {
         dispatch({ type: DELETE_POST_FAILURE, payload: error })
+    }
+}
+
+
+export const otherUserPostsAction = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: OTHER_USERS_POST_REQUEST })
+        const token = JSON.parse(localStorage.getItem('token'))
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        const { data } = await axios.get(`/post/userposts/${id}`, config)
+        dispatch({ type: OTHER_USERS_POST_SUCCESS, payload: data.posts })
+
+    } catch (error) {
+        dispatch({ type: OTHER_USERS_POST_FAILURE, payload: error })
     }
 }

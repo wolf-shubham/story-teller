@@ -117,6 +117,24 @@ export const deleteProfileAction = (displaypic) => async (dispatch) => {
 }
 
 
+export const otherUsersProfileAction = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: 'OTHER_USERS_PROFILE_REQUEST' })
+        const token = JSON.parse(localStorage.getItem('token'))
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }
+        const { data } = await axios.get(`/user/userprofile/${id}`, config)
+        dispatch({ type: 'OTHER_USERS_PROFILE_SUCCESS', payload: data.user })
+    } catch (error) {
+        dispatch({ type: 'OTHER_USERs_PROFILE_FAILURE', payload: error })
+    }
+}
+
+
 export const userLogoutAction = () => async (dispatch) => {
     localStorage.removeItem('userData')
     localStorage.removeItem('token')

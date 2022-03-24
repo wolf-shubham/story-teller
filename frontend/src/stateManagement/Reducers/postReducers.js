@@ -14,6 +14,9 @@ import {
     MY_POST_FAILURE,
     MY_POST_REQUEST,
     MY_POST_SUCCESS,
+    OTHER_USERS_POST_FAILURE,
+    OTHER_USERS_POST_REQUEST,
+    OTHER_USERS_POST_SUCCESS,
     POST_COMMENT_FAILURE,
     POST_COMMENT_REQUEST,
     POST_COMMENT_SUCCESS
@@ -141,6 +144,28 @@ export const deletePostReducer = (state = {}, action) => {
                 deletePost: action.payload
             }
         case DELETE_POST_FAILURE:
+            return {
+                loading: false,
+                error: action.payload
+            }
+        default:
+            return state
+    }
+}
+
+
+export const otherUsersPostsReducer = (state = {}, action) => {
+    switch (action.type) {
+        case OTHER_USERS_POST_REQUEST:
+            return {
+                loading: true
+            }
+        case OTHER_USERS_POST_SUCCESS:
+            return {
+                loading: false,
+                posts: action.payload
+            }
+        case OTHER_USERS_POST_FAILURE:
             return {
                 loading: false,
                 error: action.payload

@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import {
     deleteProfileReducer,
     getAllUsersReducer,
+    otherusersProfileReducer,
     updateUserProfileReducer,
     userDetailsReducer,
     userLoginRegisterReducer
@@ -14,7 +15,8 @@ import {
     deletePostReducer,
     followingUsersPostsReducer,
     likeUnlikePostReducer,
-    loggedUserPostsReducer
+    loggedUserPostsReducer,
+    otherUsersPostsReducer
 } from './Reducers/postReducers'
 
 const reducers = combineReducers({
@@ -29,6 +31,8 @@ const reducers = combineReducers({
     deletePost: deletePostReducer,
     profileUpdate: updateUserProfileReducer,
     deleteAccount: deleteProfileReducer,
+    otherUser: otherusersProfileReducer,
+    otherUserPosts: otherUsersPostsReducer,
 })
 
 const userAlreadyLoggedIn = localStorage.getItem('userData')
