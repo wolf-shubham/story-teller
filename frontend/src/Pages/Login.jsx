@@ -77,13 +77,7 @@ const Login = () => {
                     </Button>
                     <h3 className='registerLink'>New Here ? <Link to="/register">Register</Link></h3>
                 </form>
-                {error &&
-                    <>
-                        {/* <h2>{error}</h2> */}
-                        <Error
-                            message={error}
-                        />
-                    </>
+                {error && <Error message={error} />
                 }
             </div>
         </div>

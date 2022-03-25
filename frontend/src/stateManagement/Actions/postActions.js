@@ -37,7 +37,7 @@ export const followingUsersPostsAction = () => async (dispatch) => {
         dispatch({ type: FOLLOWING_USERS_POST_SUCCESS, payload: data.posts })
 
     } catch (error) {
-        dispatch({ type: FOLLOWING_USERS_POST_FAILURE, payload: error })
+        dispatch({ type: FOLLOWING_USERS_POST_FAILURE, payload: error.response.data.message })
     }
 }
 
@@ -56,7 +56,7 @@ export const likeUnlikePostAction = (id) => async (dispatch) => {
         dispatch({ type: LIKE_POST_SUCCESS, payload: data.message })
 
     } catch (error) {
-        dispatch({ type: LIKE_POST_FAILURE, payload: error })
+        dispatch({ type: LIKE_POST_FAILURE, payload: error.response.data.message })
     }
 }
 
@@ -75,7 +75,7 @@ export const commentOnPostAction = (id, comment) => async (dispatch) => {
         dispatch({ type: POST_COMMENT_SUCCESS, payload: data.message })
 
     } catch (error) {
-        dispatch({ type: POST_COMMENT_FAILURE, payload: error })
+        dispatch({ type: POST_COMMENT_FAILURE, payload: error.response.data.message })
     }
 }
 
@@ -94,7 +94,7 @@ export const loggedUserPostsAction = () => async (dispatch) => {
         dispatch({ type: MY_POST_SUCCESS, payload: data.posts })
 
     } catch (error) {
-        dispatch({ type: MY_POST_FAILURE, payload: error })
+        dispatch({ type: MY_POST_FAILURE, payload: error.response.data.message })
     }
 }
 
@@ -113,7 +113,7 @@ export const createPostAction = (text) => async (dispatch) => {
         dispatch({ type: CREATE_POST_SUCCESS, payload: data.post })
 
     } catch (error) {
-        dispatch({ type: CREATE_POST_FAILURE, payload: error })
+        dispatch({ type: CREATE_POST_FAILURE, payload: error.response.data.message })
     }
 }
 
@@ -132,7 +132,7 @@ export const deletePostAction = (id) => async (dispatch) => {
         dispatch({ type: DELETE_POST_SUCCESS, payload: data.message })
 
     } catch (error) {
-        dispatch({ type: DELETE_POST_FAILURE, payload: error })
+        dispatch({ type: DELETE_POST_FAILURE, payload: error.response.data.message })
     }
 }
 
@@ -151,6 +151,6 @@ export const otherUserPostsAction = (id) => async (dispatch) => {
         dispatch({ type: OTHER_USERS_POST_SUCCESS, payload: data.posts })
 
     } catch (error) {
-        dispatch({ type: OTHER_USERS_POST_FAILURE, payload: error })
+        dispatch({ type: OTHER_USERS_POST_FAILURE, payload: error.response.data.message })
     }
 }

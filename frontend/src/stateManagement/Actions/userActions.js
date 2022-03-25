@@ -37,7 +37,7 @@ export const userRegisterAction = (name, email, password) => async (dispatch) =>
         localStorage.setItem('userData', JSON.stringify(data.newUser))
         localStorage.setItem('token', JSON.stringify(data.token))
     } catch (error) {
-        dispatch({ type: 'USER_REGISTER_FAILURE', payload: error })
+        dispatch({ type: 'USER_REGISTER_FAILURE', payload: error.response.data.message })
     }
 }
 
@@ -56,7 +56,9 @@ export const userDetailsAction = () => async (dispatch) => {
         // console.log(data);
         dispatch({ type: 'USER_DETAILS_SUCCESS', payload: data.user })
     } catch (error) {
-        dispatch({ type: 'USER_DETAILS_FAILURE', payload: error })
+        dispatch({
+            type: 'USER_DETAILS_FAILURE', payload: error.response.data.message
+        })
     }
 }
 
@@ -75,7 +77,7 @@ export const getAllUsersAction = (name = "") => async (dispatch) => {
         // console.log(data);
         dispatch({ type: 'GET_ALL_USER_SUCCESS', payload: data.users })
     } catch (error) {
-        dispatch({ type: 'GET_ALL_USER_FAILURE', payload: error })
+        dispatch({ type: 'GET_ALL_USER_FAILURE', payload: error.response.data.message })
     }
 }
 
@@ -97,7 +99,7 @@ export const updateUserProfileAction = (displaypic) => async (dispatch) => {
         dispatch({ type: 'UPDATE_USER_PROFILE_SUCCESS', payload: data.message })
         dispatch({ type: 'USER_DETAILS_SUCCESS', payload: data.user })
     } catch (error) {
-        dispatch({ type: 'UPDATE_USER_PROFILE_FAILURE', payload: error })
+        dispatch({ type: 'UPDATE_USER_PROFILE_FAILURE', payload: error.response.data.message })
     }
 }
 
@@ -117,7 +119,7 @@ export const deleteProfileAction = (displaypic) => async (dispatch) => {
         // localStorage.removeItem('token')
         dispatch({ type: 'DELETE_PROFILE_SUCCESS', payload: data.message })
     } catch (error) {
-        dispatch({ type: 'DELETE_PROFILE_FAILURE', payload: error })
+        dispatch({ type: 'DELETE_PROFILE_FAILURE', payload: error.response.data.message })
     }
 }
 
@@ -135,7 +137,7 @@ export const otherUsersProfileAction = (id) => async (dispatch) => {
         const { data } = await axios.get(`/user/userprofile/${id}`, config)
         dispatch({ type: 'OTHER_USERS_PROFILE_SUCCESS', payload: data.user })
     } catch (error) {
-        dispatch({ type: 'OTHER_USERs_PROFILE_FAILURE', payload: error })
+        dispatch({ type: 'OTHER_USERs_PROFILE_FAILURE', payload: error.response.data.message })
     }
 }
 
@@ -153,7 +155,7 @@ export const followUnfollowUsersAction = (id) => async (dispatch) => {
         const { data } = await axios.get(`/user/followuser/${id}`, config)
         dispatch({ type: FOLLOW_USER_SUCCESS, payload: data.message })
     } catch (error) {
-        dispatch({ type: FOLLOW_USER_FAILURE, payload: error })
+        dispatch({ type: FOLLOW_USER_FAILURE, payload: error.response.data.message })
     }
 }
 
