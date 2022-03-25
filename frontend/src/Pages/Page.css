@@ -1,0 +1,40 @@
+/* register page css*/
+.registerContainer {
+    background-color: antiquewhite;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.register {
+    width: 70%;
+    height: 70vh;
+    display: flex;
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+        rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+
+.registerRight {
+    flex: 1;
+    padding: 2rem;
+    text-align: center;
+}
+
+.registerLeft {
+    height: 100%;
+    padding: 2rem;
+    flex: 1;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: coral;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

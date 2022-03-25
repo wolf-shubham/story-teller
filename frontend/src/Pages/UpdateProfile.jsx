@@ -18,19 +18,6 @@ const UpdateProfile = () => {
         dispatch(userDetailsAction())
     }, [dispatch])
 
-    // const handleImageChange = (e) => {
-    //     const file = e.target.files[0];
-
-    //     const Reader = new FileReader();
-    //     Reader.readAsDataURL(file);
-
-    //     Reader.onload = () => {
-    //         if (Reader.readyState === 2) {
-    //             setPic(Reader.result);
-    //         }
-    //     };
-    // };
-
 
     const postDetails = (profilepic) => {
         const file = profilepic

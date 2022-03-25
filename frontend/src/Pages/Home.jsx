@@ -13,7 +13,6 @@ const Home = () => {
 
     const { loading, posts, error } = useSelector(state => state.postsOfFollowingUsers)
     const { loading: userLoading, users, error: userError } = useSelector(state => state.allUsers)
-    // console.log(posts);
 
     useEffect(() => {
         dispatch(userDetailsAction())

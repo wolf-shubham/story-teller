@@ -1,5 +1,5 @@
+import './Page.css'
 import { TextField } from '@material-ui/core'
-import { Avatar } from '@material-ui/core'
 import { Button } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -29,45 +29,45 @@ const Register = () => {
     }
 
     return (
-        <div>
+        <div className='registerContainer'>
             {/* <img src={logo} alt="meeting" className='bgImage' /> */}
             <div className="register">
-                <Avatar className='avatar'>
-                </Avatar>
-                <h1 className='titleRegister'>REGISTER</h1>
-                <form onSubmit={submitHandler} className='registerForm'>
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="name"
-                        label="Name"
-                        name="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="email"
-                        label="Email Address"
-                        name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <TextField
-                        margin="normal"
-                        fullWidth
-                        required
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    {/* <TextField
+                <div className="registerRight">
+                    <form onSubmit={submitHandler} className='registerForm'>
+
+                        <h1 className='titleRegister'>REGISTER</h1>
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="name"
+                            label="Name"
+                            name="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="Email Address"
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <TextField
+                            margin="normal"
+                            fullWidth
+                            required
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        {/* <TextField
                         margin="normal"
                         fullWidth
                         name="pic"
@@ -76,15 +76,22 @@ const Register = () => {
                         id="pic"
                         onChange={(e) => postDetails(e.target.files[0])}
                     /> */}
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                    >REGISTER
-                    </Button>
-                    <h3 className='loginLink'>Already had an account ! <Link to="/login">Login</Link></h3>
-                </form>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                        >REGISTER
+                        </Button>
+
+                    </form>
+                </div>
+                <div className="registerLeft">
+                    <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta, dicta mollitia. Doloribus atque velit vero nesciunt, necessitatibus laudantium.</h1>
+                    <br />
+                    <h2 className='loginLink'>Already had an account ! <Link to="/login">Login</Link></h2>
+                </div>
+
             </div>
         </div>
     )

@@ -12,27 +12,20 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const { token, error } = useSelector((state) => state.userInfo)
+    const { loading, token, error } = useSelector((state) => state.userInfo)
 
-    // useEffect(() => {
-    //     if (token) {
-    //         history('/')
-    //     }
-    // }, [history, token])
+    useEffect(() => {
+        if (token) {
+            history('/')
+        }
+    }, [history, token])
 
 
     const submitHandle = async (e) => {
         e.preventDefault()
-        // console.log(email, password);
-        dispatch(userLoginAction(email, password))
-        // history('/')
+        await dispatch(userLoginAction(email, password))
     }
 
-    // useEffect(() => {
-    //     if (error) {
-    //         console.log(error);
-    //     }
-    // }, [error])
     return (
         <div>
             <div className="login">
@@ -73,6 +66,7 @@ const Login = () => {
                         fullWidth
                         variant="contained"
                         color="primary"
+                        disabled={loading}
                     >LOGIN
                     </Button>
                     <h3 className='registerLink'>New Here ? <Link to="/register">Register</Link></h3>
