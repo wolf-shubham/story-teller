@@ -127,7 +127,7 @@ exports.updateUserProfile = async (req, res) => {
 
         }
         else {
-            return res.status(400).json({ error })
+            return res.status(400).json({ error, message: 'not authorized to edit.' })
         }
     } catch (error) {
         return res.status(500).json({ message: 'network error' })
