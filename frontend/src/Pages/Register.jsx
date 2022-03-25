@@ -34,7 +34,6 @@ const Register = () => {
             <div className="register">
                 <div className="registerRight">
                     <form onSubmit={submitHandler} className='registerForm'>
-
                         <h1 className='titleRegister'>REGISTER</h1>
                         <TextField
                             margin="normal"
