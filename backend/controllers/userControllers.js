@@ -101,7 +101,9 @@ exports.getUsersProfile = async (req, res) => {
 
 exports.getAllUsers = async (req, res) => {
     try {
-        const users = await User.find({}).populate('userposts')
+        const users = await User.find({
+            name: { $regex: req.query.name, $options: 'i' }
+        })
         return res.status(200).json({ message: 'all users profile', users })
     } catch (error) {
         return res.status(500).json({ message: 'network error' })

@@ -6,6 +6,7 @@ import LandingPage from './Pages/LandingPage';
 import Login from './Pages/Login';
 import Profile from './Pages/Profile';
 import Register from './Pages/Register';
+import Search from './Pages/Search';
 import UpdateProfile from './Pages/UpdateProfile';
 import UserProfile from './Pages/UserProfile';
 
@@ -24,6 +25,7 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/updateprofile' element={<UpdateProfile />} />
         <Route path='/user/:id' element={isAuthenticated ? <UserProfile /> : <Login />} />
+        <Route path='/search' element={<Search />} />
       </Routes>
     </BrowserRouter>
   )
