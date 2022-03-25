@@ -104,7 +104,11 @@ exports.getAllUsers = async (req, res) => {
         const users = await User.find({
             name: { $regex: req.query.name, $options: 'i' }
         })
-        return res.status(200).json({ message: 'all users profile', users })
+        if (users) {
+            return res.status(200).json({ message: 'all users profile', users })
+        } else {
+            return res.status(404).json({ message: 'no user found...' })
+        }
     } catch (error) {
         return res.status(500).json({ message: 'network error' })
     }

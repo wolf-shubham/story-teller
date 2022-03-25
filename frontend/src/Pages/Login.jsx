@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Avatar, Button, Checkbox, FormControlLabel, TextField } from '@material-ui/core'
 import { userLoginAction } from '../stateManagement/Actions/userActions'
 import { Link, useNavigate } from 'react-router-dom'
+import Error from "../Components/Error";
 
 const Login = () => {
 
@@ -11,21 +12,27 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const { token } = useSelector((state) => state.userInfo)
+    const { token, error } = useSelector((state) => state.userInfo)
 
-    useEffect(() => {
-        if (token) {
-            history('/')
-        }
-    }, [history, token])
+    // useEffect(() => {
+    //     if (token) {
+    //         history('/')
+    //     }
+    // }, [history, token])
+
 
     const submitHandle = async (e) => {
         e.preventDefault()
         // console.log(email, password);
         dispatch(userLoginAction(email, password))
-        history('/')
+        // history('/')
     }
 
+    // useEffect(() => {
+    //     if (error) {
+    //         console.log(error);
+    //     }
+    // }, [error])
     return (
         <div>
             <div className="login">
@@ -70,6 +77,14 @@ const Login = () => {
                     </Button>
                     <h3 className='registerLink'>New Here ? <Link to="/register">Register</Link></h3>
                 </form>
+                {error &&
+                    <>
+                        {/* <h2>{error}</h2> */}
+                        <Error
+                            message={error}
+                        />
+                    </>
+                }
             </div>
         </div>
     )

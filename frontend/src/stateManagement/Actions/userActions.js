@@ -18,7 +18,7 @@ export const userLoginAction = (email, password) => async (dispatch) => {
         localStorage.setItem('userData', JSON.stringify(data.user))
         localStorage.setItem('token', JSON.stringify(data.token))
     } catch (error) {
-        dispatch({ type: 'USER_LOGIN_FAILURE', payload: error })
+        dispatch({ type: 'USER_LOGIN_FAILURE', payload: error.response.data.message })
     }
 }
 

@@ -9,8 +9,7 @@ const Search = () => {
     const dispatch = useDispatch()
     const [name, setName] = useState('')
     const { loading, users, error } = useSelector(state => state.allUsers)
-    console.log(users);
-
+    console.log(error);
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -32,9 +31,9 @@ const Search = () => {
                 />
                 <Button
                     type="submit"
-                    // fullWidth
                     variant="contained"
                     color="primary"
+                    disabled={loading}
                 >Search
                 </Button>
             </form>
