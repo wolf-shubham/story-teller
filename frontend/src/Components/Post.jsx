@@ -2,7 +2,7 @@ import { Button, Dialog } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { commentOnPostAction, deletePostAction, followingUsersPostsAction, likeUnlikePostAction, loggedUserPostsAction } from '../stateManagement/Actions/postActions'
+import { commentOnPostAction, deletePostAction, followingUsersPostsAction, likeUnlikePostAction, loggedUserPostsAction, otherUserPostsAction } from '../stateManagement/Actions/postActions'
 import Comment from './Comment'
 import User from './User'
 
@@ -14,7 +14,8 @@ const Post = ({
     authorImage,
     authorName,
     authorId,
-    isLogedIn = false
+    isLogedIn = false,
+    isUser = false
 }) => {
 
     const dispatch = useDispatch()
@@ -30,7 +31,10 @@ const Post = ({
         await dispatch(likeUnlikePostAction(postId))
         if (isLogedIn) {
             await dispatch(loggedUserPostsAction())
-        } else {
+        } else if (isUser) {
+            await dispatch(otherUserPostsAction(authorId))
+        }
+        else {
             await dispatch(followingUsersPostsAction())
         }
     }

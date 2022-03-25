@@ -27,9 +27,10 @@ const UserProfile = () => {
     const { message: follow } = useSelector((state) => state.followUnfollow)
 
     // console.log(posts)
-    const followHandle = () => {
+    const followHandle = async () => {
+        await dispatch(followUnfollowUsersAction(user._id))
+        await dispatch(otherUsersProfileAction(user._id))
         setFollowing(!following)
-        dispatch(followUnfollowUsersAction(user._id))
     }
 
 
@@ -45,6 +46,8 @@ const UserProfile = () => {
             user.followers.forEach((item) => {
                 if (item._id === userData?._id) {
                     setFollowing(true)
+                } else {
+                    setFollowing(false)
                 }
             })
         }
@@ -70,6 +73,7 @@ const UserProfile = () => {
                                 authorImage={post.author.displaypic}
                                 authorName={post.author.name}
                                 authorId={post.author._id}
+                                isUser={true}
                             />
                         ))
                         : <h2>No Posts Found of User.</h2>
