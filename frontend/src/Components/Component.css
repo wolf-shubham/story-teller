@@ -19,3 +19,21 @@
         cursive;
     /* color: white; */
 }
+
+/* User component CSS */
+.userContainer {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.5rem;
+    margin-left: -4rem;
+}
+
+.userContainer span {
+    list-style-type: none;
+    text-decoration: none;
+    display: flex;
+    margin-left: 1rem;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+}

@@ -76,20 +76,22 @@ const Home = () => {
             </div>
             <br />
             <div className="rightContainer">
-                <h2>users</h2>
-                <br />
-                {
-                    users && users.length > 0
-                        ? users.map((user) => (
-                            <User
-                                key={user._id}
-                                userId={user._id}
-                                avatar={user.displaypic}
-                                name={user.name}
-                            />
-                        ))
-                        : <h2>No Users Available.</h2>
-                }
+                <h2>suggestions for you...</h2>
+                <div className="rightUser">
+                    {
+                        users && users.length > 0
+                            ? users.map((user) => (
+                                <User
+                                    key={user._id}
+                                    userId={user._id}
+                                    avatar={user.displaypic}
+                                    name={user.name}
+                                />
+                            ))
+                            : <h2>No Users Available.</h2>
+                    }
+                </div>
+
 
             </div>
         </div>
