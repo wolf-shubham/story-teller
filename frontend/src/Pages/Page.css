@@ -1,4 +1,15 @@
-/* register page css*/
+/* font-family: 'Mea Culpa',
+cursive;
+font-family: 'Open Sans',
+sans-serif;
+font-family: 'Petemoss',
+cursive;
+font-family: 'Poppins',
+sans-serif;
+font-family: 'Ubuntu',
+sans-serif; */
+
+/* login register page css*/
 .registerContainer {
     background-color: antiquewhite;
     display: flex;
@@ -37,4 +48,90 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+.loginLeft {
+    height: 100%;
+    padding: 2rem;
+    flex: 1;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background-color: coral;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* landing page css */
+.landingPageContainer {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+    background-image: url(../Images/bg-pic.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 13rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.iconLandingPage {
+    flex: 3;
+    width: 35%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-left: 1.5rem;
+    margin-top: -1rem;
+}
+
+.landingText {
+    flex: 6;
+    /* padding: 2rem; */
+    width: 40%;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Ubuntu',
+        sans-serif;
+}
+
+.landingText h2 {
+    text-align: center;
+    line-height: 2rem;
+    padding: 1.5rem;
+    padding-bottom: 2rem;
+    margin-top: 3rem;
+}
+
+.quote {
+    flex: 3;
+    background-color: #86C6F4;
+    z-index: -1;
+    width: 100%;
+}
+
+.quoteText {
+    width: 44%;
+    height: 100%;
+    padding: auto 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Open Sans',
+        sans-serif;
+}
+
+.iconLandingPage img {
+    width: 100px;
+}
+
+.iconLandingPage h1 {
+    font-size: 75px;
+    font-family: 'Mea Culpa',
+        cursive;
 }

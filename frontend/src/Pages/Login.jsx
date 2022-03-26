@@ -25,12 +25,13 @@ const Login = () => {
     const submitHandle = async (e) => {
         e.preventDefault()
         await dispatch(userLoginAction(email, password))
+        history('/')
     }
 
     return (
         <div className='registerContainer'>
             <div className="register">
-                <div className="registerLeft">
+                <div className="loginLeft">
                     <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta, dicta mollitia. Doloribus atque velit vero nesciunt, necessitatibus laudantium.</h1>
                     <br />
                     <h2 className='registerLink'>New Here ? <Link to="/register">Register</Link></h2>
@@ -55,16 +56,14 @@ const Login = () => {
                             margin="normal"
                             required
                             fullWidth
-                            name="password"
                             label="Password"
                             type="password"
                             id="password"
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
+                            onChange={(e) => setPassword(e.target.value)} />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
+                            label="Remember me" checked
                         />
                         <Button
                             type="submit"

@@ -19,7 +19,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={isAuthenticated ? <Home /> : <LandingPage />} />
-        {/* <Route path='/home' element={<Home />} /> */}
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/profile' element={<Profile />} />

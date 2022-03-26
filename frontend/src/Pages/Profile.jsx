@@ -70,9 +70,6 @@ function Profile() {
                 <h2>user profile</h2>
                 <img src={userData?.displaypic} alt="author pic" style={{ width: '50px', borderRadius: '50%' }} />
                 <h3>{userData?.name}</h3>
-                {/* <h3>following : {user.following.length}</h3>
-                <h3>followers : {user.followers.length}</h3>
-                <h3>post : {user.userposts.length}</h3> */}
             </div>
             <Button
                 style={{ border: 'none' }}
