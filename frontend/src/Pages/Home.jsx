@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import CreatePost from '../Components/CreatePost'
+import Header from '../Components/Header'
 import Post from '../Components/Post'
 import User from '../Components/User'
 import { followingUsersPostsAction } from '../stateManagement/Actions/postActions'
@@ -22,6 +23,7 @@ const Home = () => {
 
     return (
         <div>
+            <Header />
             <h1>Home</h1>
             <Link to='/profile'>profile</Link>
             <br />

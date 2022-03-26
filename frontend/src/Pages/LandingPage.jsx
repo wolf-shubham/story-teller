@@ -19,7 +19,6 @@ const LandingPage = () => {
             </div>
             <div className="landingText">
                 <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis excepturi eum recusandae nihil dolor officiis!</h2>
-
                 <Button
                     variant="contained"
                     color="primary"

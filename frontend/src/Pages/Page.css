@@ -11,7 +11,7 @@ sans-serif; */
 
 /* login register page css*/
 .registerContainer {
-    background-color: antiquewhite;
+    background-color: #FFEDDB;
     display: flex;
     height: 100vh;
     justify-content: center;
@@ -19,7 +19,7 @@ sans-serif; */
 }
 
 .register {
-    width: 70%;
+    width: 65%;
     height: 70vh;
     display: flex;
     background-color: #fff;
@@ -90,7 +90,6 @@ sans-serif; */
 
 .landingText {
     flex: 6;
-    /* padding: 2rem; */
     width: 40%;
     display: flex;
     overflow: hidden;
