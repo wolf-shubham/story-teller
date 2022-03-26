@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css';
+import Header from './Components/Header';
 import Home from './Pages/Home';
 import LandingPage from './Pages/LandingPage';
 import Login from './Pages/Login';
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      {isAuthenticated ? <Header /> : ''}
       <Routes>
         <Route path='/' element={isAuthenticated ? <Home /> : <LandingPage />} />
         <Route path='/login' element={<Login />} />

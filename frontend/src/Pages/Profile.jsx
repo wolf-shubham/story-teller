@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import CreatePost from '../Components/CreatePost'
-import Header from '../Components/Header'
 import Post from '../Components/Post'
 import User from '../Components/User'
 import { loggedUserPostsAction } from '../stateManagement/Actions/postActions'
@@ -42,7 +41,6 @@ function Profile() {
 
     return (
         <div>
-            <Header />
             {loading && <CircularProgress />}
             <h1>profile</h1>
             <br />
