@@ -79,21 +79,22 @@ const Post = ({
                 <Link to={`/post/${postId}`} style={{ color: '#9D9D9D' }}>
                     <h3>{caption}</h3>
                 </Link>
+
+                <span>
+                    <Button onClick={handleLike} style={{ border: 'none' }}>
+                        {liked
+                            ? <span className='material-icons' style={{ color: 'red' }}>favorite</span>
+                            : <i className='material-icons' >favorite_border</i>
+                        }
+                    </Button>
+
+                    {isLogedIn
+                        ? <Button onClick={deletePostHandler} style={{ border: 'none' }}>
+                            <span className='material-icons' >delete</span>
+                        </Button>
+                        : null}
+                </span>
             </div>
-
-            <Button onClick={handleLike} style={{ border: 'none' }}>
-                {liked
-                    ? <span className='material-icons' style={{ color: 'red' }}>favorite</span>
-                    : <i className='material-icons' >favorite_border</i>
-                }
-            </Button>
-            {isLogedIn
-                ? <Button onClick={deletePostHandler} style={{ border: 'none' }}>
-                    <span className='material-icons' >delete</span>
-                </Button>
-                : null}
-
-            <br />
             <Button
                 style={{ border: 'none' }}
                 onClick={() => setLikesUser(!likesUser)}
@@ -103,9 +104,10 @@ const Post = ({
             <Button style={{ border: 'none' }} disabled={comments.length === 0 ? true : false}>
                 <h3>{comments.length} comments</h3>
             </Button>
-            <Dialog open={likesUser} onClose={() => setLikesUser(!likesUser)}>
-                <div className="DialogBox">
-                    <h4>Liked By</h4>
+            <Dialog open={likesUser} onClose={() => setLikesUser(!likesUser)} >
+                <div className="likesDialogBox">
+                    <h3>Liked By</h3>
+                    <br />
                     {likes.map((like) => (
                         <User
                             key={like._id}
@@ -116,13 +118,18 @@ const Post = ({
                     ))}
                 </div>
             </Dialog>
+
             <form onSubmit={addCommentHandler}>
-                <input type="text"
-                    value={addComment}
-                    onChange={(e) => setAddComment(e.target.value)}
-                    placeholder='add comment..' />
-                <button type="submit">add</button>
+                <div className="addCommentContainer">
+                    <input type="text"
+                        value={addComment}
+                        onChange={(e) => setAddComment(e.target.value)}
+                        placeholder='add comment..' />
+                    <button type="submit" className='btnAddComment'>comment</button>
+                </div>
             </form>
+
+
             {/* <Dialog open={allComments} onClose={() => setAllComments(!allComments)}>
                 
             </Dialog> */}
