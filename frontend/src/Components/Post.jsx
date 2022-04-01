@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { commentOnPostAction, deletePostAction, followingUsersPostsAction, likeUnlikePostAction, loggedUserPostsAction, otherUserPostsAction } from '../stateManagement/Actions/postActions'
 import Comment from './Comment'
 import User from './User'
+import './Component.css'
 
 const Post = ({
     postId,
@@ -69,12 +70,16 @@ const Post = ({
 
 
     return (
-        <div style={{ border: '2px solid darkgrey', margin: '10px', padding: '10px' }}>
-            <Link to={`/post/${postId}`}>
-                <h3>{caption}</h3>
-            </Link>
-            <img src={authorImage} alt="author pic" style={{ width: '35px', borderRadius: '50%' }} />
-            <Link to={`/user/${authorId}`}><h4>{authorName}</h4></Link>
+        <div className='postContainer'>
+            <div className="userDetails">
+                <img src={authorImage} alt="author pic" style={{ width: '35px', borderRadius: '50%' }} />
+                <Link to={`/user/${authorId}`} style={{ color: 'black' }}><h2>{authorName}</h2></Link>
+            </div>
+            <div className="captionPost">
+                <Link to={`/post/${postId}`} style={{ color: '#9D9D9D' }}>
+                    <h3>{caption}</h3>
+                </Link>
+            </div>
 
             <Button onClick={handleLike} style={{ border: 'none' }}>
                 {liked

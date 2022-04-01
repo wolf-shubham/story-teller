@@ -41,16 +41,16 @@
 /* create post CSS */
 
 
-.createPostContainer{
+.createPostContainer {
     /* border: 1px solid darkgray; */
-    margin: 1rem;
+    margin: 1rem 1rem 3rem 1rem;
     padding: 1rem;
     border-radius: 5px;
     background: #4FD3C4;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
-.createPostTab{
+.createPostTab {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,13 +58,13 @@
 }
 
 
-.createPostForm{
+.createPostForm {
     display: flex;
     flex: auto;
     flex-direction: column;
 }
 
-.createPostForm >textarea{
+.createPostForm>textarea {
     align-self: center;
     font-size: larger;
     width: 90%;
@@ -77,7 +77,7 @@
     background-color: #F3F4ED;
 }
 
-.btnCreatePost{
+.btnCreatePost {
     width: 8rem;
     margin-top: 1rem;
     float: right;
@@ -94,6 +94,35 @@
 }
 
 .btnCreatePost:hover {
-  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
-  transform: translateY(-2px);
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+}
+
+/* POST styling CSS */
+.postContainer {
+    margin: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 5px;
+    background: #CDF0EA;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px -3px,
+        rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.userDetails {
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins',
+        sans-serif;
+}
+
+.userDetails>img {
+    margin-right: 1rem;
+}
+
+.captionPost {
+    font-family: 'Open Sans',
+        sans-serif;
+    font-size: 18px;
+    margin-top: 1rem;
 }
