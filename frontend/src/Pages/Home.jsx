@@ -49,11 +49,7 @@ const Home = () => {
                 </ul>
             </div>
             <div className="centerContainer" >
-                <h2 >posts...</h2>
-                <br />
                 <CreatePost />
-                <br />
-                <br />
                 {
                     posts && posts.length > 0
                         ? posts.map((post) => (

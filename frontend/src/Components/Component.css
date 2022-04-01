@@ -37,3 +37,63 @@
     font-size: 20px;
     cursor: pointer;
 }
+
+/* create post CSS */
+
+
+.createPostContainer{
+    /* border: 1px solid darkgray; */
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    background: #4FD3C4;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.createPostTab{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: start;
+}
+
+
+.createPostForm{
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+}
+
+.createPostForm >textarea{
+    align-self: center;
+    font-size: larger;
+    width: 90%;
+    height: 3.5rem;
+    border: none;
+    border-radius: 5px;
+    resize: none;
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #F3F4ED;
+}
+
+.btnCreatePost{
+    width: 8rem;
+    margin-top: 1rem;
+    float: right;
+    margin-right: 2.2rem;
+    height: 2.2rem;
+    text-transform: uppercase;
+    font-size: 20px;
+    background-color: #13aa52;
+    border: none;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btnCreatePost:hover {
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}

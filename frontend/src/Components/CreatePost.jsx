@@ -1,12 +1,15 @@
+import { Button } from '@material-ui/core'
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { createPostAction } from '../stateManagement/Actions/postActions'
+import './Component.css'
 
 const CreatePost = () => {
 
     const dispatch = useDispatch()
 
     const [post, setPost] = useState('')
+    const { loading, user } = useSelector((state) => state.userDetails)
 
     const submitPostHandler = async (e) => {
         e.preventDefault()
@@ -14,19 +17,28 @@ const CreatePost = () => {
     }
 
     return (
-        <div>
-            <h2>Create Post</h2>
-            <form onSubmit={submitPostHandler}>
-                <input
-                    type="text"
-                    name="content"
-                    id="content"
-                    placeholder='add ur story...'
-                    value={post}
-                    onChange={(e) => setPost(e.target.value)}
-                />
-                <button type="submit">create post</button>
-            </form>
+        <div className='createPostContainer'>
+            {/* <h2>Create Post</h2> */}
+            <div className="createPostTab">
+                <img src={user?.displaypic} alt="author pic" style={{ width: '50px', borderRadius: '50%', border: '2px solid #fff', marginBottom: '20px' }} />
+                <form onSubmit={submitPostHandler} className='createPostForm'>
+                    <textarea
+                        type="text"
+                        name="content"
+                        id="content"
+                        placeholder='add ur story...'
+                        value={post}
+                        onChange={(e) => setPost(e.target.value)}
+                    />
+                    <span>
+                        <button
+                            type="submit"
+                            className='btnCreatePost'
+                        >add post</button>
+                    </span>
+
+                </form>
+            </div>
         </div>
     )
 }
