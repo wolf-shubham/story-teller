@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Button, Checkbox, FormControlLabel, TextField } from '@material-ui/core'
 import { userLoginAction } from '../stateManagement/Actions/userActions'
 import { Link, useNavigate } from 'react-router-dom'
-import Error from "../Components/Error";
+import Error from "./Error";
 import './Page.css'
 
 const Login = () => {

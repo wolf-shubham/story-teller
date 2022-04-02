@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css';
 import Header from './Components/Header';
+import NotFound from './Components/NotFound';
 import Home from './Pages/Home';
 import LandingPage from './Pages/LandingPage';
 import Login from './Pages/Login';
@@ -20,15 +21,16 @@ function App() {
     <BrowserRouter>
       {isAuthenticated ? <Header /> : ''}
       <Routes>
-        <Route path='/' element={isAuthenticated ? <Home /> : <LandingPage />} />
+        <Route path='/' exact element={isAuthenticated ? <Home /> : <LandingPage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/profile' element={<Profile />} />
+        <Route path='/profile' element={<Profile />} exact />
         <Route path='/updateprofile' element={<UpdateProfile />} />
         <Route path='/user/:id' element={isAuthenticated ? <UserProfile /> : <Login />} />
         <Route path='/search' element={<Search />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter >
   )
 }
 

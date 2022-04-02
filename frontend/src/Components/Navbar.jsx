@@ -20,8 +20,10 @@ const Navbar = () => {
                     <span>Messages</span></li>
                 <Link to='/profile' className='linkTag'><li><PermIdentityOutlinedIcon fontSize="large" />
                     <span>Profile</span></li></Link>
-                <li><SearchOutlinedIcon fontSize="large" />
-                    <span>Search</span></li>
+                <Link to='/search' className='linkTag'>
+                    <li><SearchOutlinedIcon fontSize="large" />
+                        <span>Search</span></li>
+                </Link>
                 <li><MenuBookOutlinedIcon fontSize="large" />
                     <span>Books</span></li>
                 <li><MoreOutlinedIcon fontSize="large" />
