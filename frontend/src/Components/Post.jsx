@@ -134,7 +134,7 @@ const Post = ({
                 
             </Dialog> */}
             <div className="DialogBox">
-                <h2>Comments...</h2>
+                {/* <h2>Comments...</h2> */}
                 {comments.length > 0
                     ? comments.map((comment) => (
                         <Comment

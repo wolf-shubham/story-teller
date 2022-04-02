@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './Component.css'
 
 const Comment = ({
     userId,
@@ -10,10 +11,14 @@ const Comment = ({
     postId
 }) => {
     return (
-        <div>
-            <Link to={`user/${userId}`}>{name}</Link>
-            <img src={avatar} alt="author pic" style={{ width: '35px', borderRadius: '50%' }} />
-            <h4>{comment}</h4>
+        <div className='commentContainer'>
+            <span>
+                <Link to={`user/${userId}`} style={{ color: 'black', fontFamily: "sans-serif", fontWeight: '600' }}>
+                    {name}
+                </Link>
+            </span>
+            {/* <img src={avatar} alt="author pic" style={{ width: '35px', borderRadius: '50%' }} /> */}
+            <h2>{comment}</h2>
         </div>
     )
 }
