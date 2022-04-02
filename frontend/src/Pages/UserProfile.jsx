@@ -1,8 +1,7 @@
 import { Button, CircularProgress, Dialog } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import CreatePost from '../Components/CreatePost'
+import { useNavigate, useParams } from 'react-router-dom'
 import Navbar from '../Components/Navbar'
 import Post from '../Components/Post'
 import User from '../Components/User'
@@ -13,8 +12,8 @@ import { followUnfollowUsersAction, otherUsersProfileAction, userDetailsAction }
 const UserProfile = () => {
 
     const dispatch = useDispatch()
-    const params = useParams()
     const navigate = useNavigate()
+    const params = useParams()
 
     const [showFollowers, setshowFollowers] = useState(false)
     const [showFollowing, setshowFollowing] = useState(false)
@@ -27,13 +26,15 @@ const UserProfile = () => {
     const { message: commentAdded } = useSelector((state) => state.addComment)
     const { message: follow } = useSelector((state) => state.followUnfollow)
 
-    // console.log(posts)
     const followHandle = async () => {
         await dispatch(followUnfollowUsersAction(user._id))
         await dispatch(otherUsersProfileAction(user._id))
         setFollowing(!following)
     }
 
+    if (params.id === userData?._id) {
+        navigate('/profile')
+    }
 
     useEffect(() => {
         dispatch(userDetailsAction())
@@ -53,6 +54,7 @@ const UserProfile = () => {
             })
         }
     }, [userData?._id, user])
+
 
     return (
         <div className='homeContainer'>

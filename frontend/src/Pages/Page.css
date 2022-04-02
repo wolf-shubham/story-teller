@@ -258,3 +258,19 @@ sans-serif; */
     flex-direction: column;
     justify-content: space-between;
 }
+
+/* search page CSS */
+.searchForm {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+
+.searchResults {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 25%;
+}

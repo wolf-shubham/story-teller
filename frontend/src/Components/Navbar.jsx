@@ -12,8 +12,10 @@ const Navbar = () => {
     return (
         <div className='navbarConatiner'>
             <ul className='homeLinks'>
-                <li className='activeLink'><HomeIcon fontSize="large" />
-                    <span>Home</span></li>
+                <Link to='/' className='linkTag'>
+                    <li className='activeLink'><HomeIcon fontSize="large" />
+                        <span>Home</span></li>
+                </Link>
                 <li><NotificationsNoneIcon fontSize="large" />
                     <span>Notifications</span></li>
                 <li><MessageOutlinedIcon fontSize="large" />

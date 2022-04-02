@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import User from '../Components/User'
 import { getAllUsersAction } from '../stateManagement/Actions/userActions'
+import './Page.css'
 
 const Search = () => {
 
@@ -17,13 +18,12 @@ const Search = () => {
     }
 
     return (
-        <div>
-            <h2>search...</h2>
+        <div className='searchContainer'>
             {loading && <CircularProgress />}
-            <form onSubmit={submitHandler} className='registerForm'>
+            <form onSubmit={submitHandler} className='searchForm'>
                 <TextField
                     margin="normal"
-                    fullWidth
+                    style={{ width: '50%', marginRight: '2rem' }}
                     id="name"
                     label="search..."
                     value={name}
@@ -33,6 +33,7 @@ const Search = () => {
                     type="submit"
                     variant="contained"
                     color="primary"
+                    style={{ width: '10%', height: '2.5rem' }}
                     disabled={loading}
                 >Search
                 </Button>
