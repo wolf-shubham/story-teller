@@ -11,12 +11,9 @@ const Comment = ({
 }) => {
     return (
         <div className='commentContainer'>
-            <span>
-                <Link to={`user/${userId}`} className="commentLinkTag">
-                    {name}
-                </Link>
-            </span>
-            {/* <img src={avatar} alt="author pic" style={{ width: '35px', borderRadius: '50%' }} /> */}
+            <Link to={`user/${userId}`} className="commentLinkTag">
+                {name}
+            </Link>
             <h4>{comment}</h4>
         </div >
     )

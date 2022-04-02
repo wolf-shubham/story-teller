@@ -23,7 +23,6 @@ function Profile() {
     const { createPost } = useSelector((state) => state.createPost)
     const { deletePost } = useSelector((state) => state.deletePost)
 
-    // console.log(userData?.displaypic);
     const deleteAccount = () => {
         dispatch(deleteProfileAction())
         dispatch(userLogoutAction())
@@ -42,11 +41,11 @@ function Profile() {
 
     return (
         <div className='profileContainer'>
-            {loading && <CircularProgress />}
             <div className="leftProfileContainer">
                 <h2>profile details</h2>
             </div>
-            <div className="centerProfileContainer">
+            <div className="centerContainer">
+                {loading && <CircularProgress />}
                 <CreatePost />
                 {
                     myPosts && myPosts.length > 0

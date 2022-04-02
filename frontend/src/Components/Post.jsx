@@ -18,7 +18,6 @@ const Post = ({
     isLogedIn = false,
     isUser = false
 }) => {
-
     const dispatch = useDispatch()
     const [liked, setLiked] = useState(false)
     const [likesUser, setLikesUser] = useState(false)

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import CreatePost from '../Components/CreatePost'
+import Navbar from '../Components/Navbar'
 import Post from '../Components/Post'
 import User from '../Components/User'
 import { otherUserPostsAction } from '../stateManagement/Actions/postActions'
@@ -54,13 +55,14 @@ const UserProfile = () => {
     }, [userData?._id, user])
 
     return (
-        <div>
-            <h2>user profile...</h2>
-            {loading && <CircularProgress />}
-            <h1>profile</h1>
-            <br />
+        <div className='homeContainer'>
+
             <div className="leftContainer">
-                <h2>posts</h2>
+                <Navbar />
+            </div>
+
+            <div className="centerContainer">
+                {loading && <CircularProgress />}
                 {
                     posts && posts.length > 0
                         ? posts.map((post) => (
@@ -79,13 +81,12 @@ const UserProfile = () => {
                         : <h2>No Posts Found of User.</h2>
                 }
             </div>
-            <div className="rightContainer">
+            <div className="rightProfileContainer">
                 {
                     user && (
                         <>
-                            <h2>user profile</h2>
-                            <img src={user?.displaypic} alt="author pic" style={{ width: '50px', borderRadius: '50%' }} />
-                            <h3>{user?.name}</h3>
+                            <img src={user?.displaypic} alt="author pic" style={{ width: '200px', borderRadius: '50%' }} />
+                            <p>{user?.name}</p>
                             <Button
                                 style={{ border: 'none' }}
                                 onClick={() => setshowFollowers(!showFollowers)}
@@ -131,7 +132,7 @@ const UserProfile = () => {
                             </Dialog>
                             <div>
 
-                                <Button style={{ background: following ? 'pink' : 'lightblue' }} onClick={followHandle}>
+                                <Button style={{ background: following ? '#C74B50' : 'lightblue' }} onClick={followHandle}>
                                     {following ? "unfollow" : "follow"}
                                 </Button>
                             </div>
