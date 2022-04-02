@@ -17,20 +17,28 @@ const Navbar = () => {
                     <li className='activeLink'><HomeIcon fontSize="large" />
                         <span>Home</span></li>
                 </Link>
-                <li><NotificationsNoneIcon fontSize="large" />
-                    <span>Notifications</span></li>
-                <li><MessageOutlinedIcon fontSize="large" />
-                    <span>Messages</span></li>
+                <Link to='/unfinished' className='linkTag'>
+                    <li><NotificationsNoneIcon fontSize="large" />
+                        <span>Notifications</span></li>
+                </Link>
+                <Link to='/unfinished' className='linkTag'>
+                    <li><MessageOutlinedIcon fontSize="large" />
+                        <span>Messages</span></li>
+                </Link>
                 <Link to='/profile' className='linkTag'><li><PermIdentityOutlinedIcon fontSize="large" />
                     <span>Profile</span></li></Link>
                 <Link to='/search' className='linkTag'>
                     <li><SearchOutlinedIcon fontSize="large" />
                         <span>Search</span></li>
                 </Link>
-                <li><MenuBookOutlinedIcon fontSize="large" />
-                    <span>Books</span></li>
-                <li><MoreOutlinedIcon fontSize="large" />
-                    <span>More</span></li>
+                <Link to='/unfinished' className='linkTag'>
+                    <li><MenuBookOutlinedIcon fontSize="large" />
+                        <span>Books</span></li>
+                </Link>
+                <Link to='/unfinished' className='linkTag'>
+                    <li><MoreOutlinedIcon fontSize="large" />
+                        <span>More</span></li>
+                </Link>
             </ul>
         </div>
     )

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css';
 import Header from './Components/Header';
 import NotFound from './Components/NotFound';
+import WIP from './Pages/WIP';
 import Home from './Pages/Home';
 import LandingPage from './Pages/LandingPage';
 import Login from './Pages/Login';
@@ -28,6 +29,7 @@ function App() {
         <Route path='/updateprofile' element={<UpdateProfile />} />
         <Route path='/user/:id' element={isAuthenticated ? <UserProfile /> : <Login />} />
         <Route path='/search' element={<Search />} />
+        <Route path='/unfinished' element={<WIP />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter >
