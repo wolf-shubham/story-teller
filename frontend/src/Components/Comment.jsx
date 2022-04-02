@@ -5,7 +5,6 @@ import './Component.css'
 const Comment = ({
     userId,
     name,
-    avatar,
     comment,
     commentId,
     postId
@@ -13,13 +12,13 @@ const Comment = ({
     return (
         <div className='commentContainer'>
             <span>
-                <Link to={`user/${userId}`} style={{ color: 'black', fontFamily: "sans-serif", fontWeight: '600' }}>
+                <Link to={`user/${userId}`} className="commentLinkTag">
                     {name}
                 </Link>
             </span>
             {/* <img src={avatar} alt="author pic" style={{ width: '35px', borderRadius: '50%' }} /> */}
-            <h2>{comment}</h2>
-        </div>
+            <h4>{comment}</h4>
+        </div >
     )
 }
 

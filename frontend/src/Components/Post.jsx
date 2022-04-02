@@ -124,7 +124,7 @@ const Post = ({
                     <input type="text"
                         value={addComment}
                         onChange={(e) => setAddComment(e.target.value)}
-                        placeholder='add comment..' />
+                        placeholder='add comment ...' />
                     <button type="submit" className='btnAddComment'>comment</button>
                 </div>
             </form>
@@ -134,14 +134,12 @@ const Post = ({
                 
             </Dialog> */}
             <div className="DialogBox">
-                {/* <h2>Comments...</h2> */}
                 {comments.length > 0
                     ? comments.map((comment) => (
                         <Comment
                             key={comment._id}
                             userId={comment.commentPostedBy._id}
                             name={comment.commentPostedBy.name}
-                            avatar={comment.commentPostedBy.displaypic}
                             comment={comment.comment}
                         />
                     ))

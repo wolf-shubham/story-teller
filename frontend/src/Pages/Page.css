@@ -220,3 +220,47 @@ sans-serif; */
     display: flex;
     flex-direction: column;
 }
+
+/* profile CSS */
+.profileContainer {
+    display: flex;
+    height: 91vh;
+}
+
+.leftProfileContainer {
+    flex: 2.5;
+    margin: 0.4rem;
+    padding: 1rem;
+    border-right: 1.5px solid darkgray;
+}
+
+.centerProfileContainer {
+    flex: 6.5;
+    overflow: scroll;
+    margin: 0.4rem;
+    border-right: 1.5px solid darkgray;
+}
+
+.rightProfileContainer {
+    flex: 2.5;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rightProfileContainer>p {
+    font-size: 3rem;
+    font-family: 'Petemoss',
+        cursive;
+    font-weight: 550;
+    letter-spacing: 2px;
+}
+
+.profileFunctionality {
+    display: flex;
+    height: 35vh;
+    padding: 2rem;
+    flex-direction: column;
+    justify-content: space-between;
+}
