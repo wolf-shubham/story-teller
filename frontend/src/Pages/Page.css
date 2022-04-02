@@ -161,38 +161,6 @@ sans-serif; */
     border-right: 1.5px solid darkgray;
 }
 
-.homeLinks {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    padding: 1rem;
-    margin-left: -1rem;
-}
-
-.homeLinks li {
-    width: 110%;
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    font-size: 25px;
-    cursor: pointer;
-    padding: 0.6rem;
-}
-
-.homeLinks li span {
-    margin-left: 1rem;
-}
-
-.activeLink {
-    color: #396EB0;
-}
-
-.homeLinks li:hover {
-    background-color: #e6ecf0;
-    border-radius: 1.5rem;
-    color: #39a2db;
-}
-
 .centerContainer {
     flex: 6.5;
     overflow: scroll;
@@ -273,4 +241,30 @@ sans-serif; */
     flex-direction: column;
     justify-content: flex-start;
     margin-left: 25%;
+}
+
+/* UPDATE PROFILE CSS */
+.updateProfileContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    font-family: 'Petemoss',
+        cursive;
+    text-align: center;
+}
+
+.updateProfileForm {
+    width: 40%;
+    /* background: #86C6F4; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.updateProfile>h2 {
+    font-size: 50px;
+    letter-spacing: 2px;
+    margin-top: 2rem;
 }

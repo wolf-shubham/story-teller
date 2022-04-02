@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { updateUserProfileAction, userDetailsAction } from '../stateManagement/Actions/userActions'
+import './Page.css'
 
 
 const UpdateProfile = () => {
@@ -57,13 +58,13 @@ const UpdateProfile = () => {
 
 
     return (
-        <div>
-            <h2>UpdateProfilePic</h2>
-            <form className='updateForm' onSubmit={submitHandler}>
+        <div className='updateProfileContainer'>
+            {loading && <CircularProgress />}
+
+            <form className='updateProfileForm' onSubmit={submitHandler}>
                 <div className="updateProfile">
-                    {loading && <CircularProgress />}
-                    <div className="updateField">
-                        {/* <TextField
+                    <h2>Edit Profile ...</h2>
+                    {/* <TextField
                             margin="normal"
                             required
                             fullWidth
@@ -83,17 +84,16 @@ const UpdateProfile = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         /> */}
-                        <TextField
-                            margin="normal"
-                            fullWidth
-                            name="pic"
-                            label="Profile Pic"
-                            type="file"
-                            id="displaypic"
-                            // value={pic}
-                            onChange={(e) => postDetails(e.target.files[0])}
-                        />
-                    </div>
+                    <TextField
+                        margin="normal"
+                        fullWidth
+                        name="pic"
+                        label="Profile Pic"
+                        type="file"
+                        id="displaypic"
+                        // value={pic}
+                        onChange={(e) => postDetails(e.target.files[0])}
+                    />
 
                     <img src={pic} alt="" className="updateImage" style={{ width: '350px' }} />
                 </div>

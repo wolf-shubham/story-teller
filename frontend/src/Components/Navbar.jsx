@@ -7,6 +7,7 @@ import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import MoreOutlinedIcon from '@mui/icons-material/MoreOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import './Component.css'
 
 const Navbar = () => {
     return (

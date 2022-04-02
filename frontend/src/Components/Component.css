@@ -203,3 +203,36 @@
     letter-spacing: 1px;
     font-weight: 800;
 }
+
+/* NAVBAR component CSS */
+.homeLinks {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 1rem;
+    margin-left: -1rem;
+}
+
+.homeLinks li {
+    width: 150%;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 0.6rem;
+}
+
+.homeLinks li span {
+    margin-left: 1rem;
+}
+
+.activeLink {
+    color: #396EB0;
+}
+
+.homeLinks li:hover {
+    background-color: #e6ecf0;
+    border-radius: 1.5rem;
+    color: #39a2db;
+}

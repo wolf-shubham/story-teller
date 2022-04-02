@@ -21,7 +21,7 @@ const UserProfile = () => {
 
     const { loading, posts } = useSelector((state) => state.otherUserPosts)
     const { loading: otherUserLoading, user } = useSelector((state) => state.otherUser)
-    const { loading: userLoading, user: userData } = useSelector((state) => state.userDetails)
+    const { user: userData } = useSelector((state) => state.userDetails)
     const { message: likeMessage } = useSelector((state) => state.likes)
     const { message: commentAdded } = useSelector((state) => state.addComment)
     const { message: follow } = useSelector((state) => state.followUnfollow)
@@ -84,6 +84,7 @@ const UserProfile = () => {
                 }
             </div>
             <div className="rightProfileContainer">
+                {otherUserLoading && <CircularProgress />}
                 {
                     user && (
                         <>
