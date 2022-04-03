@@ -7,6 +7,7 @@ import Comment from './Comment'
 import User from './User'
 import './Component.css'
 
+
 const Post = ({
     postId,
     caption,
@@ -61,11 +62,11 @@ const Post = ({
 
     useEffect(() => {
         likes.forEach((item) => {
-            if (item._id === user._id) {
+            if (item._id === user?._id) {
                 setLiked(true)
             }
         })
-    }, [likes, user._id])
+    }, [likes, user?._id])
 
 
     return (
@@ -105,8 +106,7 @@ const Post = ({
             </Button>
             <Dialog open={likesUser} onClose={() => setLikesUser(!likesUser)} >
                 <div className="likesDialogBox">
-                    <h3>Liked By</h3>
-                    <br />
+                    <h2>Liked By</h2>
                     {likes.map((like) => (
                         <User
                             key={like._id}
@@ -142,7 +142,7 @@ const Post = ({
                             comment={comment.comment}
                         />
                     ))
-                    : <h4>No comment yet.</h4>
+                    : <h3 style={{ marginLeft: "1rem", fontFamily: "cursive", color: '#346db4' }}>No comments yet.</h3>
                 }
             </div>
         </div>

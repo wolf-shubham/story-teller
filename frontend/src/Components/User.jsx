@@ -7,7 +7,7 @@ const User = ({ userId, avatar, name }) => {
         <div className='userContainer'>
             <img src={avatar} alt="display pic" style={{ width: '35px', borderRadius: '50%' }} />
             <span>
-                <Link to={`/user/${userId}`} className='linkTag'>
+                <Link to={`/user/${userId}`} className='linkTag' style={{ color: '#396EB0' }}>
                     <h3>{name}</h3>
                 </Link>
             </span>

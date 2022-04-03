@@ -108,8 +108,8 @@ const UserProfile = () => {
                                 <h3>{user?.userposts.length} posts</h3>
                             </Button>
                             <Dialog open={showFollowers} onClose={() => setshowFollowers(!showFollowers)}>
-                                <div className="DialogBox">
-                                    <h4>followers...</h4>
+                                <div className="likesDialogBox">
+                                    <h2>followers...</h2>
                                     {user && user?.followers.map((followers) => (
                                         <User
                                             key={followers._id}
@@ -121,8 +121,8 @@ const UserProfile = () => {
                                 </div>
                             </Dialog>
                             <Dialog open={showFollowing} onClose={() => setshowFollowing(!showFollowing)}>
-                                <div className="DialogBox">
-                                    <h4>following...</h4>
+                                <div className="likesDialogBox">
+                                    <h2>following...</h2>
                                     {user && user?.following.map((following) => (
                                         <User
                                             key={following._id}

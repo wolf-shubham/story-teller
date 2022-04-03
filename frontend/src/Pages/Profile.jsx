@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import './Page.css'
+import '../Components/Component.css'
 import CreatePost from '../Components/CreatePost'
 import Post from '../Components/Post'
 import User from '../Components/User'
@@ -88,8 +89,8 @@ function Profile() {
                     <h3>{userData?.userposts.length} posts</h3>
                 </Button>
                 <Dialog open={showFollowers} onClose={() => setshowFollowers(!showFollowers)}>
-                    <div className="DialogBox">
-                        <h4>followers...</h4>
+                    <div className="likesDialogBox">
+                        <h2>followers...</h2>
                         {userData && userData?.followers.map((followers) => (
                             <User
                                 key={followers._id}
@@ -101,8 +102,8 @@ function Profile() {
                     </div>
                 </Dialog>
                 <Dialog open={showFollowing} onClose={() => setshowFollowing(!showFollowing)}>
-                    <div className="DialogBox">
-                        <h4>following...</h4>
+                    <div className="likesDialogBox">
+                        <h2>following...</h2>
                         {userData && userData?.following.map((following) => (
                             <User
                                 key={following._id}
