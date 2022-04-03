@@ -1,6 +1,6 @@
-import { Button, CircularProgress, TextField } from '@material-ui/core'
+import { Button, TextField } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { updateUserProfileAction, userDetailsAction } from '../stateManagement/Actions/userActions'
 import './Page.css'
@@ -13,7 +13,7 @@ const UpdateProfile = () => {
     const dispatch = useDispatch()
     const history = useNavigate()
 
-    const { loading, user } = useSelector((state) => state.userDetails)
+    // const { loading, user } = useSelector((state) => state.userDetails)
 
     useEffect(() => {
         dispatch(userDetailsAction())
@@ -59,7 +59,7 @@ const UpdateProfile = () => {
 
     return (
         <div className='updateProfileContainer'>
-            {loading && <CircularProgress />}
+            {/* {loading && <CircularProgress />} */}
 
             <form className='updateProfileForm' onSubmit={submitHandler}>
                 <div className="updateProfile">

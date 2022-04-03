@@ -85,7 +85,7 @@ export const getAllUsersAction = (name = "") => async (dispatch) => {
 export const updateUserProfileAction = (displaypic) => async (dispatch) => {
     try {
         dispatch({ type: 'UPDATE_USER_PROFILE_REQUEST' })
-        console.log(displaypic);
+        // console.log(displaypic);
         const token = JSON.parse(localStorage.getItem('token'))
         const config = {
             headers: {

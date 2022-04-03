@@ -20,8 +20,11 @@ const userSchema = new mongoose.Schema({
     },
     followers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-    userposts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }]
-})
+    userposts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
+},
+    {
+        timestamps: true
+    })
 
 userSchema.methods.generateToken = function () {
     return jwt.sign({ _id: this._id }, process.env.JWT_SECRET_KEY);

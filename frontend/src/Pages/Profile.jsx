@@ -18,7 +18,6 @@ function Profile() {
     const [showFollowing, setshowFollowing] = useState(false)
 
     const { loading, myPosts } = useSelector((state) => state.userPosts)
-    // const { user } = useSelector((state) => state.userInfo)
     const { loading: userLoading, user: userData } = useSelector((state) => state.userDetails)
     const { createPost } = useSelector((state) => state.createPost)
     const { deletePost } = useSelector((state) => state.deletePost)
@@ -67,6 +66,7 @@ function Profile() {
             </div>
 
             <div className="rightProfileContainer">
+                {userLoading && <CircularProgress />}
                 <img src={userData?.displaypic} alt="author pic" style={{ width: '200px', height: '200px', borderRadius: '50%' }} />
                 <p>{userData?.name}</p>
 
