@@ -12,6 +12,9 @@ import Register from './Pages/Register';
 import Search from './Pages/Search';
 import UpdateProfile from './Pages/UpdateProfile';
 import UserProfile from './Pages/UserProfile';
+import Messages from './Pages/Messages';
+import Notifications from './Pages/Notifications';
+import Books from './Pages/Books';
 
 
 function App() {
@@ -29,7 +32,10 @@ function App() {
         <Route path='/updateprofile' element={<UpdateProfile />} />
         <Route path='/user/:id' element={isAuthenticated ? <UserProfile /> : <Login />} />
         <Route path='/search' element={<Search />} />
-        <Route path='/unfinished' element={<WIP />} />
+        <Route path='/message' element={<Messages />} />
+        <Route path='/notification' element={<Notifications />} />
+        <Route path='/books' element={<Books />} />
+        <Route path='/more' element={<WIP />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter >

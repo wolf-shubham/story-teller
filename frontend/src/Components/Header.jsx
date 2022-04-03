@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import React from 'react'
 import logo from '../Images/writer.png'
 import './Component.css'
@@ -18,7 +18,9 @@ const Header = () => {
             <div className="headerCenterContainer">home icons</div>
             <div className="headerRightContainer">
                 <img src={user?.displaypic} alt="display pic" style={{ width: '45px', borderRadius: '50%' }} />
-                <h1>{user?.name}</h1>
+                <h1>
+                    <Link to='/profile' className='linkTag'>{user?.name}</Link>
+                </h1>
             </div>
         </div>
     )

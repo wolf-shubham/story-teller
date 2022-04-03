@@ -15,9 +15,7 @@ const WIP = () => {
                     alignItems: 'center',
                     justifyContent: 'center'
                 }}>
-                    <img src={pogo} alt=""
-
-                    />
+                    <img src={pogo} alt="work in progress !!!" />
                 </span>
 
             </div>

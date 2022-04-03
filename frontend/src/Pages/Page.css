@@ -181,8 +181,12 @@ sans-serif; */
 }
 
 .rightContainer h2 {
-    margin-bottom: 1rem;
-    font-size: 25px;
+    margin-bottom: 0.5rem;
+    font-size: 43px;
+    letter-spacing: 1px;
+    font-family: 'Mea Culpa',
+        cursive;
+    color: #013052;
 }
 
 .rightUser {
