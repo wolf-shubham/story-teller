@@ -21,14 +21,14 @@
 }
 
 /* User component CSS */
-.userContainer {
+.userDiv {
     display: flex;
     justify-content: flex-start;
     padding: 0.5rem;
     margin-left: -4rem;
 }
 
-.userContainer span {
+.userDiv span {
     list-style-type: none;
     text-decoration: none;
     display: flex;
@@ -235,4 +235,18 @@
     background-color: #e6ecf0;
     border-radius: 1.5rem;
     color: #39a2db;
+}
+
+/* Error page not found component */
+.notFoundContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.notFoundContainer h1 {
+    margin: 3rem;
+    font-family: 'Ubuntu',
+        sans-serif;
 }

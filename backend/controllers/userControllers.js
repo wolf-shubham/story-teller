@@ -104,6 +104,14 @@ exports.getAllUsers = async (req, res) => {
         const users = await User.find({
             name: { $regex: req.query.name, $options: 'i' }
         })
+
+        // for (let i = 0; i < users.length; i++) {
+        //     // const post = await Post.findById(posts[i])
+        //     // await post.remove()
+        //     console.log(req.user._id);
+        //     console.log(users._id)
+        // }
+
         if (users) {
             return res.status(200).json({ message: 'all users profile', users })
         } else {

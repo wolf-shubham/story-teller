@@ -2,11 +2,11 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import CreatePost from '../Components/CreatePost'
 import Post from '../Components/Post'
-import User from '../Components/User'
 import './Page.css'
 import { followingUsersPostsAction } from '../stateManagement/Actions/postActions'
 import { getAllUsersAction, userDetailsAction } from '../stateManagement/Actions/userActions'
 import Navbar from '../Components/Navbar'
+import UserList from '../Components/UserList'
 
 const Home = () => {
 
@@ -45,17 +45,14 @@ const Home = () => {
                         ))
                         : <h2>No Posts Found.</h2>
                 }
-
-
             </div>
-            <br />
             <div className="rightContainer">
                 <h2>suggestions for you...</h2>
                 <div className="rightUser">
                     {
                         users && users.length > 0
                             ? users.map((user) => (
-                                <User
+                                <UserList
                                     key={user._id}
                                     userId={user._id}
                                     avatar={user.displaypic}
