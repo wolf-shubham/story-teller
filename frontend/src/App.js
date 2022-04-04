@@ -28,10 +28,10 @@ function App() {
         <Route path='/' exact element={isAuthenticated ? <Home /> : <LandingPage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/profile' element={<Profile />} exact />
+        <Route path='/profile' element={isAuthenticated ? <Profile /> : <LandingPage />} />
         <Route path='/updateprofile' element={<UpdateProfile />} />
         <Route path='/user/:id' element={isAuthenticated ? <UserProfile /> : <Login />} />
-        <Route path='/search' element={<Search />} />
+        <Route path='/search' element={isAuthenticated ? <Search /> : <LandingPage />} />
         <Route path='/message' element={<Messages />} />
         <Route path='/notification' element={<Notifications />} />
         <Route path='/books' element={<Books />} />

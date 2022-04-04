@@ -186,7 +186,7 @@ exports.deleteMyProfile = async (req, res) => {
             await post.save()
         }
 
-        // removig likes of deleted user
+        // removing likes of deleted user
         for (let i = 0; i < allPosts.length; i++) {
             const post = await Post.findById(allPosts[i]._id)
 
