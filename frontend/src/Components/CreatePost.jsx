@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core'
+import { CircularProgress } from '@material-ui/core'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createPostAction } from '../stateManagement/Actions/postActions'
@@ -18,7 +18,7 @@ const CreatePost = () => {
 
     return (
         <div className='createPostContainer'>
-            {/* <h2>Create Post</h2> */}
+            {loading && <CircularProgress />}
             <div className="createPostTab">
                 <img src={user?.displaypic} alt="author pic" style={{ width: '50px', borderRadius: '50%', border: '2px solid #fff', marginBottom: '20px' }} />
                 <form onSubmit={submitPostHandler} className='createPostForm'>

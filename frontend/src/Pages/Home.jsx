@@ -7,6 +7,8 @@ import { followingUsersPostsAction } from '../stateManagement/Actions/postAction
 import { getAllUsersAction, userDetailsAction } from '../stateManagement/Actions/userActions'
 import Navbar from '../Components/Navbar'
 import UserList from '../Components/UserList'
+import { CircularProgress } from '@material-ui/core'
+import Error from './Error'
 
 const Home = () => {
 
@@ -28,6 +30,7 @@ const Home = () => {
             </div>
             <div className="centerContainer" >
                 <CreatePost />
+                {loading && <CircularProgress />}
                 {
                     posts && posts.length > 0
                         ? posts.map((post) => (
@@ -43,12 +46,13 @@ const Home = () => {
 
                             />
                         ))
-                        : <h2>No Posts Found.</h2>
+                        : <h2>{error && <Error message={error} />} </h2>
                 }
             </div>
             <div className="rightContainer">
                 <h2>suggestions for you...</h2>
                 <div className="rightUser">
+                    {userLoading && <CircularProgress />}
                     {
                         users && users.length > 0
                             ? users.map((user) => (
@@ -59,11 +63,9 @@ const Home = () => {
                                     name={user.name}
                                 />
                             ))
-                            : <h2>No Users Available.</h2>
+                            : <h2>{userError && <Error message={userError} />} </h2>
                     }
                 </div>
-
-
             </div>
         </div>
     )

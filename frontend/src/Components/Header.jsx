@@ -15,7 +15,7 @@ const Header = () => {
                     <img src={logo} alt="logo" style={{ width: '40px' }} />
                 </Link>
             </div>
-            <div className="headerCenterContainer">home icons</div>
+            <div className="headerCenterContainer"></div>
             <div className="headerRightContainer">
                 <img src={user?.displaypic} alt="display pic" style={{ width: '45px', borderRadius: '50%' }} />
                 <h1>

@@ -17,7 +17,7 @@ const UserProfile = () => {
 
     const [showFollowers, setshowFollowers] = useState(false)
     const [showFollowing, setshowFollowing] = useState(false)
-    const [following, setFollowing] = useState(false)
+    const [following, setFollowing] = useState()
 
     const { loading, posts } = useSelector((state) => state.otherUserPosts)
     const { loading: otherUserLoading, user } = useSelector((state) => state.otherUser)
@@ -53,7 +53,7 @@ const UserProfile = () => {
                 }
             })
         }
-    }, [userData?._id, user])
+    }, [userData?._id, user, follow])
 
 
     return (

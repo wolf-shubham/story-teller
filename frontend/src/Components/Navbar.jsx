@@ -12,7 +12,6 @@ import './Component.css'
 const Navbar = () => {
 
     const [tab, setTab] = useState(window.location.pathname)
-    console.log(tab);
 
     return (
         <div className='navbarConatiner'>
