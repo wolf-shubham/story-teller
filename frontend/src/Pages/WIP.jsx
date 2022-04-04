@@ -1,7 +1,7 @@
 import React from 'react'
-import pogo from '../Images/gears.gif'
 import Navbar from '../Components/Navbar'
 import './Page.css'
+import Test from '../Components/Test'
 
 const WIP = () => {
     return (
@@ -10,14 +10,8 @@ const WIP = () => {
                 <Navbar />
             </div>
             <div className="centerContainer" >
-                <span style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                }}>
-                    <img src={pogo} alt="work in progress !!!" />
-                </span>
-
+                <p className='workingText'>website under construction...</p>
+                <Test />
             </div>
             <div className="rightContainer"></div>
         </div>
