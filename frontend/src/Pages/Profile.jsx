@@ -9,6 +9,7 @@ import Post from '../Components/Post'
 import User from '../Components/User'
 import { loggedUserPostsAction } from '../stateManagement/Actions/postActions'
 import { deleteProfileAction, userDetailsAction, userLogoutAction } from '../stateManagement/Actions/userActions'
+import Navbar from '../Components/Navbar'
 
 function Profile() {
 
@@ -41,8 +42,8 @@ function Profile() {
 
     return (
         <div className='profileContainer'>
-            <div className="leftProfileContainer">
-                <h2>profile details</h2>
+            <div className="leftContainer">
+                <Navbar />
             </div>
             <div className="centerContainer">
                 {loading && <CircularProgress />}
@@ -68,7 +69,9 @@ function Profile() {
 
             <div className="rightProfileContainer">
                 {userLoading && <CircularProgress />}
-                <img src={userData?.displaypic} alt="author pic" style={{ width: '200px', height: '200px', borderRadius: '50%' }} />
+                <Link to='/updateprofile'>
+                    <img src={userData?.displaypic} alt="author pic" style={{ width: '200px', height: '200px', borderRadius: '50%' }} />
+                </Link>
                 <p>{userData?.name}</p>
 
                 <Button

@@ -11,7 +11,7 @@ const Comment = ({
 }) => {
     return (
         <div className='commentContainer'>
-            <Link to={`user/${userId}`} className="commentLinkTag">
+            <Link to={`/user/${userId}`} className="commentLinkTag">
                 {name}
             </Link>
             <h4>{comment}</h4>
