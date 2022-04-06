@@ -61,6 +61,7 @@ function Profile() {
                                 authorName={post.author.name}
                                 authorId={post.author._id}
                                 isLogedIn={true}
+                                createdAt={post.createdAt}
                             />
                         ))
                         : <h2>No Posts Found.</h2>

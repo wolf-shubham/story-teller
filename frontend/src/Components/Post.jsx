@@ -2,6 +2,7 @@ import { Button, Dialog } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { format } from "timeago.js"
 import { commentOnPostAction, deletePostAction, followingUsersPostsAction, likeUnlikePostAction, loggedUserPostsAction, otherUserPostsAction } from '../stateManagement/Actions/postActions'
 import Comment from './Comment'
 import User from './User'
@@ -16,6 +17,7 @@ const Post = ({
     authorImage,
     authorName,
     authorId,
+    createdAt,
     isLogedIn = false,
     isUser = false
 }) => {
@@ -72,8 +74,12 @@ const Post = ({
     return (
         <div className='postContainer'>
             <div className="userDetails">
-                <img src={authorImage} alt="author pic" style={{ width: '35px', borderRadius: '50%' }} />
-                <Link to={`/user/${authorId}`} style={{ color: 'black' }}><h2>{authorName}</h2></Link>
+                <img src={authorImage} alt="author pic" style={{ width: '40px', borderRadius: '50%' }} />
+                <div className="postDetails" style={{ display: 'flex', flexDirection: "column" }}>
+                    <Link to={`/user/${authorId}`} style={{ color: 'black' }}><h3>{authorName}</h3></Link>
+                    <span style={{ fontSize: "13px", fontWeight: "600" }}>{format(createdAt)}</span>
+                </div>
+
             </div>
             <div className="captionPost">
                 <Link to={`/post/${postId}`} style={{ color: '#9D9D9D' }}>

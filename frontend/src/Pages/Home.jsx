@@ -16,6 +16,7 @@ const Home = () => {
 
     const { loading, posts, error } = useSelector(state => state.postsOfFollowingUsers)
     const { loading: userLoading, users, error: userError } = useSelector(state => state.allUsers)
+    console.log(posts)
 
     useEffect(() => {
         dispatch(userDetailsAction())
@@ -43,7 +44,7 @@ const Home = () => {
                                 authorImage={post.author.displaypic}
                                 authorName={post.author.name}
                                 authorId={post.author._id}
-
+                                createdAt={post.createdAt}
                             />
                         ))
                         : <h2>{error && <Error message={error} />} </h2>

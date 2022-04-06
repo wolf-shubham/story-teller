@@ -77,6 +77,7 @@ const UserProfile = () => {
                                 authorImage={post.author.displaypic}
                                 authorName={post.author.name}
                                 authorId={post.author._id}
+                                createdAt={post.createdAt}
                                 isUser={true}
                             />
                         ))

@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import React from 'react'
 import logo from '../Images/writer.png'
 import './Component.css'

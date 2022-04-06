@@ -54,7 +54,7 @@ exports.myposts = async (req, res) => {
             )
             posts.push(post)
         }
-        return res.status(200).json({ posts, message: 'my posts' })
+        return res.status(200).json({ posts: posts.reverse(), message: 'my posts' })
     } catch (error) {
         return res.status(404).json({ message: 'cannot access user posts' })
     }
@@ -101,7 +101,7 @@ exports.followingUsersPosts = async (req, res) => {
             }
         }).populate('author likes comments.commentPostedBy')
 
-        const posts = [...userPosts, ...followingPosts]
+        const posts = userPosts.concat(...followingPosts)
 
         return res.status(200).json({ posts: posts.reverse() })
     } catch (error) {
