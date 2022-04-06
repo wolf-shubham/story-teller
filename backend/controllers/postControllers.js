@@ -88,11 +88,21 @@ exports.deletepost = async (req, res) => {
 exports.followingUsersPosts = async (req, res) => {
     try {
         const user = await User.findById(req.user._id).populate('following', 'userposts')
-        const posts = await Post.find({
+        const userPosts = []
+        for (let i = 0; i < user.userposts.length; i++) {
+            const post = await Post.findById(user.userposts[i]).populate(
+                "likes comments.commentPostedBy author"
+            )
+            userPosts.push(post)
+        }
+        const followingPosts = await Post.find({
             author: {
                 $in: user.following
             }
         }).populate('author likes comments.commentPostedBy')
+
+        const posts = [...userPosts, ...followingPosts]
+
         return res.status(200).json({ posts: posts.reverse() })
     } catch (error) {
         return res.status(500).json({ message: 'network error' })
