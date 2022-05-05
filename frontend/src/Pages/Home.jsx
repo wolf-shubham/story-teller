@@ -16,6 +16,7 @@ const Home = () => {
 
     const { loading, posts, error } = useSelector(state => state.postsOfFollowingUsers)
     const { loading: userLoading, users, error: userError } = useSelector(state => state.allUsers)
+    const { createPost: postofUser } = useSelector(state => state.createPost)
     console.log(posts)
 
     useEffect(() => {
@@ -23,6 +24,10 @@ const Home = () => {
         dispatch(followingUsersPostsAction())
         dispatch(getAllUsersAction())
     }, [dispatch])
+
+    useEffect(() => {
+
+    }, [postofUser])
 
     return (
         <div className='homeContainer'>
