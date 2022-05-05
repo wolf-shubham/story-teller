@@ -1,5 +1,5 @@
 import { CircularProgress } from '@material-ui/core'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createPostAction } from '../stateManagement/Actions/postActions'
 import './Component.css'
@@ -15,6 +15,9 @@ const CreatePost = () => {
         e.preventDefault()
         await dispatch(createPostAction(post))
     }
+    useEffect(() => {
+
+    }, [dispatch])
 
     return (
         <div className='createPostContainer'>

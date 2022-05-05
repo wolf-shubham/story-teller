@@ -2,11 +2,11 @@ import { Button, Dialog } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { format } from "timeago.js"
 import { commentOnPostAction, deletePostAction, followingUsersPostsAction, likeUnlikePostAction, loggedUserPostsAction, otherUserPostsAction } from '../stateManagement/Actions/postActions'
 import Comment from './Comment'
 import User from './User'
 import './Component.css'
+import moment from 'moment'
 
 
 const Post = ({
@@ -77,7 +77,7 @@ const Post = ({
                 <img src={authorImage} alt="author pic" style={{ width: '40px', borderRadius: '50%' }} />
                 <div className="postDetails" style={{ display: 'flex', flexDirection: "column" }}>
                     <Link to={`/user/${authorId}`} style={{ color: 'black' }}><h3>{authorName}</h3></Link>
-                    <span style={{ fontSize: "13px", fontWeight: "600" }}>{format(createdAt)}</span>
+                    <span style={{ fontSize: "13px", fontWeight: "600" }}>{moment(createdAt).fromNow()}</span>
                 </div>
 
             </div>
