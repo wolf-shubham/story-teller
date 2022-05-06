@@ -10,12 +10,14 @@ const Search = () => {
 
     const dispatch = useDispatch()
     const [name, setName] = useState('')
+    const [show, setShow] = useState(false)
     const { loading, users, error } = useSelector(state => state.allUsers)
     console.log(error);
 
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(getAllUsersAction(name))
+        setShow(true)
     }
 
     return (
@@ -44,7 +46,7 @@ const Search = () => {
                     >Search
                     </Button>
                 </form>
-                <div className="searchResults">
+                <div className="searchResults" style={{ display: `${show ? 'block' : 'none'}` }}>
                     {users && users.map((user) => (
                         <User
                             key={user._id}

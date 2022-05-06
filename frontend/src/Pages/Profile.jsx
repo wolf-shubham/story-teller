@@ -46,8 +46,8 @@ function Profile() {
                 <Navbar />
             </div>
             <div className="centerContainer">
-                {loading && <CircularProgress />}
                 <CreatePost />
+                {loading && <CircularProgress />}
                 {
                     myPosts && myPosts.length > 0
                         ? myPosts.map((post) => (
