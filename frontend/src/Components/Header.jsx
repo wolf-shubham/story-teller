@@ -3,6 +3,7 @@ import React from 'react'
 import logo from '../Images/writer.png'
 import './Component.css'
 import { useSelector } from 'react-redux'
+import { Typography } from '@material-ui/core'
 
 
 const Header = () => {
@@ -13,6 +14,9 @@ const Header = () => {
             <div className="headerContainer">
                 <Link to='/'>
                     <img src={logo} alt="logo" style={{ width: '40px' }} />
+                </Link>
+                <Link to='/' className='linkTag'>
+                    <Typography variant="h4" className="headerText">story teller...</Typography>
                 </Link>
             </div>
             <div className="headerCenterContainer"></div>

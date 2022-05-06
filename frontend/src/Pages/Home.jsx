@@ -61,14 +61,17 @@ const Home = () => {
                     {userLoading && <CircularProgress />}
                     {
                         users && users.length > 0
-                            ? users.map((user) => (
-                                <UserList
-                                    key={user._id}
-                                    userId={user._id}
-                                    avatar={user.displaypic}
-                                    name={user.name}
-                                />
-                            ))
+                            ? users
+                                .sort((a, b) => b.followers.length - a.followers.length)
+                                .map((user) => (
+                                    <UserList
+                                        key={user._id}
+                                        userId={user._id}
+                                        avatar={user.displaypic}
+                                        name={user.name}
+                                    />
+                                ))
+                                .slice(0, 5)
                             : <h2>{userError && <Error message={userError} />} </h2>
                     }
                 </div>

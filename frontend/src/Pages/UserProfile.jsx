@@ -22,7 +22,7 @@ const UserProfile = () => {
     const { loading, posts } = useSelector((state) => state.otherUserPosts)
     const { loading: otherUserLoading, user } = useSelector((state) => state.otherUser)
     const { user: userData } = useSelector((state) => state.userDetails)
-    const { message: likeMessage } = useSelector((state) => state.likes)
+    // const { message: likeMessage } = useSelector((state) => state.likes)
     const { message: commentAdded } = useSelector((state) => state.addComment)
     const { message: follow } = useSelector((state) => state.followUnfollow)
 
