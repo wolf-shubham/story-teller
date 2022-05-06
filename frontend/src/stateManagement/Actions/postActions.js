@@ -102,7 +102,7 @@ export const loggedUserPostsAction = () => async (dispatch) => {
 }
 
 
-export const createPostAction = (text) => async (dispatch) => {
+export const createPostAction = (text, dateAt) => async (dispatch) => {
     try {
         dispatch({ type: CREATE_POST_REQUEST })
         const token = JSON.parse(localStorage.getItem('token'))
@@ -112,7 +112,7 @@ export const createPostAction = (text) => async (dispatch) => {
                 'Authorization': `Bearer ${token}`
             }
         }
-        const { data } = await axios.post('/post/createpost', { text }, config)
+        const { data } = await axios.post('/post/createpost', { text, dateAt }, config)
         dispatch({ type: CREATE_POST_SUCCESS, payload: data.post })
 
     } catch (error) {

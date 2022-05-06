@@ -6,6 +6,7 @@ exports.createPostController = async (req, res) => {
     try {
         const newPost = {
             body: req.body.text,
+            createdAt: req.body.dateAt,
             author: req.user._id
         }
         const post = await Post.create(newPost)

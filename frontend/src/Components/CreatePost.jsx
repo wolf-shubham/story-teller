@@ -12,7 +12,8 @@ const CreatePost = () => {
 
     const submitPostHandler = async (e) => {
         e.preventDefault()
-        await dispatch(createPostAction(post))
+        const dateAt = Date.now()
+        await dispatch(createPostAction(post, dateAt))
         setPost('')
         await dispatch(followingUsersPostsAction())
     }
