@@ -82,7 +82,7 @@ const Post = ({
 
             </div>
             <div className="captionPost">
-                <Link to={`/post/${postId}`} style={{ color: '#9D9D9D' }}>
+                <Link to={`/post/${postId}`} style={{ color: 'black' }}>
                     <h3>{caption}</h3>
                 </Link>
 

@@ -153,9 +153,10 @@
 }
 
 .captionPost {
-    font-family: 'Open Sans',
+    font-family: 'Poppins',
         sans-serif;
     font-size: 18px;
+    letter-spacing: 1px;
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
@@ -228,19 +229,16 @@
 }
 
 .commentContainer>h4 {
-    color: darkgrey;
-    font-size: 1.5rem;
-    margin-top: -2px;
-    font-family: 'Petemoss',
-        cursive;
+    /* color: darkgrey; */
+    font-size: 1rem;
+    font-family: 'Poppins',
+        sans-serif;
     margin-left: 1rem;
-    letter-spacing: 2px;
-    font-weight: 900;
+    letter-spacing: 1px;
 }
 
 .commentLinkTag {
-    text-decoration: none;
-    color: inherit;
+    color: #316B83;
     font-family: 'Poppins',
         sans-serif;
 
